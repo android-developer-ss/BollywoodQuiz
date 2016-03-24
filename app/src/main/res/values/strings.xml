@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">BollywoodQuiz</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_offline_quiz_main_page">OfflineQuizMainPage</string>
+    <string name="title_activity_offline_beginner">OfflineBeginner</string>
+    <string name="title_activity_offline_intermediate">OfflineIntermediate</string>
+</resources>
