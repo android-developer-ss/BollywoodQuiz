@@ -4,4 +4,8 @@
     <string name="title_activity_offline_quiz_main_page">OfflineQuizMainPage</string>
     <string name="title_activity_offline_beginner">OfflineBeginner</string>
     <string name="title_activity_offline_intermediate">OfflineIntermediate</string>
+    <string name="title_activity_beginner">Beginner</string>
+    <string name="title_activity_level_2">Level_2</string>
+    <string name="title_activity_video_round">VideoRound</string>
+    <string name="player_error">Player Error</string>
 </resources>

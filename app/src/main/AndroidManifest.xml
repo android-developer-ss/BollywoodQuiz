@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.svs.myprojects.bollywoodquiz">
+    <uses-permission android:name="android.permission.INTERNET"/>
+
 
     <application
         android:allowBackup="true"
@@ -32,6 +34,23 @@
         <activity
             android:name=".OfflineIntermediate"
             android:label="@string/title_activity_offline_intermediate"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".offline.Level_1"
+            android:label="@string/title_activity_beginner"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".offline.Level_2"
+            android:label="@string/title_activity_level_2"
+            android:parentActivityName=".OfflineQuizMainPage"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.svs.myprojects.bollywoodquiz.OfflineQuizMainPage" />
+        </activity>
+        <activity
+            android:name=".online.VideoRound"
+            android:label="@string/title_activity_video_round"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

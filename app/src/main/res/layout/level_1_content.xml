@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/im_happy_sad_faces"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.svs.myprojects.bollywoodquiz.OfflineBeginner"
+    tools:showIn="@layout/level_1_activity">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0.3"
+        android:background="@color/colorOrange"
+        android:scaleType="centerCrop" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:alpha="0.9"
+        android:background="@color/colorDeepOrange"
+        android:orientation="horizontal"
+        android:padding="@dimen/fab_margin">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/TextTimerScore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TIMER: " />
+
+            <TextView
+                android:id="@+id/timer_text"
+                style="@style/TextTimerScore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="10 secs" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:gravity="end">
+
+            <TextView
+                style="@style/TextTimerScore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SCORE  " />
+
+            <TextView
+                android:id="@+id/score_text"
+                style="@style/TextTimerScore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- Question Answer and next button -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical">
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/question_text"
+                style="@style/TextQuestion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="50dp"
+                android:padding="@dimen/fab_margin"
+                android:text="Questions"
+                android:textSize="14sp"
+                android:textStyle="italic" />
+        </ScrollView>
+
+        <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/true_false_radio_group"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/fab_margin"
+            android:alpha="0.9"
+            android:background="@color/colorDeepOrange"
+            android:orientation="horizontal"
+            android:padding="8dp">
+
+            <RadioButton
+                android:id="@+id/true_click"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingLeft="@dimen/fab_margin"
+                android:text="TRUE"
+                android:textColor="@android:color/white"
+                android:textSize="14sp"
+                android:textStyle="italic" />
+
+            <RadioButton
+                android:id="@+id/false_click"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingLeft="@dimen/fab_margin"
+                android:text="FALSE"
+                android:textColor="@android:color/white"
+                android:textSize="14sp"
+                android:textStyle="italic" />
+        </RadioGroup>
+
+        <Button
+            android:textColor="@android:color/white"
+            android:id="@+id/next_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/button_background"
+            android:text="NEXT" />
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/image_on_success"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:src="@drawable/thumbs_up"
+        android:visibility="gone" />
+
+</RelativeLayout>
