@@ -6,11 +6,14 @@
         <item name="colorPrimary">@color/colorOrange</item>
         <item name="colorPrimaryDark">@color/colorDeepOrange</item>
         <item name="colorAccent">@android:color/holo_blue_dark</item>
+        <item name="android:textColor">@android:color/white</item>
     </style>
 
-    <style name="AppTheme.WhiteAccent" >
+    <style name="AppTheme.WhiteAccent">
         <!-- Customize your theme here. -->
         <item name="colorAccent">@android:color/white</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:layout_marginTop">10dp</item>
     </style>
 
     <style name="AppTheme.NoActionBar">

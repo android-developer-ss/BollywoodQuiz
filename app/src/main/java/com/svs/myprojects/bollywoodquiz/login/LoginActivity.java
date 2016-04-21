@@ -1,9 +1,13 @@
-package com.svs.myprojects.bollywoodquiz;
+package com.svs.myprojects.bollywoodquiz.login;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
+import com.svs.myprojects.bollywoodquiz.R;
+
 public class LoginActivity extends AppCompatActivity {
+
+    private static final String FIREBASE_URL = "https://android-chat.firebaseio-demo.com";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

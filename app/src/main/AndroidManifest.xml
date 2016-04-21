@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".BollywoodApplication"
         android:allowBackup="true"
         android:icon="@drawable/im_bollywood_logo"
         android:label="@string/app_name"
@@ -49,7 +50,7 @@
             android:label="@string/title_activity_video_round"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".login.LoginActivity"
             android:label="@string/title_activity_login"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
