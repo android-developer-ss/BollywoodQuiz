@@ -1,72 +1,24 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorDeepOrange"
+    android:orientation="vertical"
     tools:context="com.svs.myprojects.bollywoodquiz.login.LoginFragment">
 
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/user_id_holder"
-        android:layout_width="@dimen/login_text_view_width"
-        android:layout_height="wrap_content"
-         android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/login_text_top_margin"
-        android:theme="@style/AppTheme.WhiteAccent">
+    <include layout="@layout/flake_user_id" />
 
-        <AutoCompleteTextView
-            android:id="@+id/user_id"
-            style="@style/LoginTextStyle"
-            android:layout_width="@dimen/login_text_view_width"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@android:color/transparent"
-            android:drawableLeft="@drawable/ic_account_circle_white_18dp"
-            android:hint="@string/user_id"
-            android:inputType="textPersonName"
-            android:maxLines="1" />
+    <include layout="@layout/flake_password" />
 
-    </android.support.design.widget.TextInputLayout>
-
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/password_holder"
-        android:layout_width="@dimen/login_text_view_width"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/user_id_holder"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/login_text_top_margin"
-        android:textAlignment="center"
-        android:theme="@style/AppTheme.WhiteAccent">
-
-        <AutoCompleteTextView
-            android:id="@+id/password"
-            style="@style/AppTheme.WhiteAccent"
-            android:layout_width="@dimen/login_text_view_width"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:backgroundTint="@android:color/transparent"
-            android:drawableLeft="@drawable/ic_visibility_white_18dp"
-            android:gravity="center"
-            android:hint="@string/password"
-            android:inputType="textPersonName"
-            android:maxLines="1"
-            android:textSize="@dimen/login_screen_text_size" />
-    </android.support.design.widget.TextInputLayout>
-
-
-    <Button
+    <include
         android:id="@+id/login_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/password_holder"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
-        android:text="@string/login"
-        android:textColor="@color/colorDeepOrange" />
+        layout="@layout/flake_button" />
+
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/login_button"
-        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
         android:layout_marginTop="10dp">
 
         <TextView
@@ -86,4 +38,4 @@
     </LinearLayout>
 
 
-</RelativeLayout>
+</LinearLayout>

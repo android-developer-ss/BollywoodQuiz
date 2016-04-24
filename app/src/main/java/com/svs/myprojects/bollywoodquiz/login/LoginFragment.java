@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -18,6 +19,8 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
     private Button mButton;
     private View mRootView;
     private TextView mRegisterHere;
+    private AutoCompleteTextView mUserId;
+    private AutoCompleteTextView mPassword;
 
     public LoginFragment() {
         // Required empty public constructor
@@ -47,14 +50,23 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mButton = (Button) mRootView.findViewById(R.id.login_button);
+        mButton.setText(R.string.login);
         mButton.setOnClickListener(this);
         mRegisterHere = (TextView) mRootView.findViewById(R.id.register_here);
         mRegisterHere.setOnClickListener(this);
+        mUserId = (AutoCompleteTextView) mRootView.findViewById(R.id.user_id);
+        mPassword = (AutoCompleteTextView) mRootView.findViewById(R.id.password);
     }
 
     public void onButtonPressed(int id) {
         if (mListener != null) {
             mListener.onFragmentInteraction(id);
+        }
+    }
+
+    public void onError(String message) {
+        if (mListener != null) {
+            mListener.onError(message);
         }
     }
 
@@ -77,12 +89,33 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-//        if (v.getId() == R.id.login_button) {
-        onButtonPressed(v.getId());
-//        }
+        switch (v.getId()) {
+            case R.id.login_button:
+                if (allFieldsFilled()) {
+                    onButtonPressed(v.getId());
+                } else {
+                    onError(getResources().getString(R.string.string_fill_all_fields));
+                }
+                break;
+            case R.id.register_here:
+                onButtonPressed(v.getId());
+                break;
+        }
+    }
+
+    private boolean allFieldsFilled() {
+        if (mUserId.getText().toString().length() < 1) {
+//            mUserId.setBackgroundColor(getResources().getColor(android.R.color.holo_red_light));
+            return false;
+        } else if (mPassword.getText().toString().length() < 1) {
+//            mPassword.setBackgroundColor(getResources().getColor(android.R.color.holo_red_light));
+            return false;
+        }
+        return true;
     }
 
     public interface OnFragmentInteractionListener {
         void onFragmentInteraction(int viewId);
+        void onError(String message);
     }
 }

@@ -1,6 +1,8 @@
 package com.svs.myprojects.bollywoodquiz.login;
 
 import android.os.Bundle;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -17,6 +19,7 @@ public class LoginActivity extends AppCompatActivity
 
     private static final String FIREBASE_URL = "https://android-chat.firebaseio-demo.com";
     private ImageView ic_back_arrow;
+    private CoordinatorLayout mCoordinatorLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +39,7 @@ public class LoginActivity extends AppCompatActivity
     private void setupViews() {
         ic_back_arrow = (ImageView) findViewById(R.id.ic_back_arrow);
         ic_back_arrow.setOnClickListener(this);
+        mCoordinatorLayout = (CoordinatorLayout) findViewById(R.id.coordinator_layout);
     }
 
     @Override
@@ -79,6 +83,12 @@ public class LoginActivity extends AppCompatActivity
                 replaceFragment(RegisterFragment.newInstance(), true);
                 break;
         }
+    }
+
+    @Override
+    public void onError(String message) {
+        Snackbar.make(mCoordinatorLayout, message, Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
     }
 
     @Override
