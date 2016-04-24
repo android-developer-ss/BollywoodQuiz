@@ -6,4 +6,5 @@
     <dimen name="well_done_size">200dp</dimen>
     <dimen name="login_text_view_width">220dp</dimen>
     <dimen name="login_text_top_margin">10dp</dimen>
+    <dimen name="login_screen_text_size">14sp</dimen>
 </resources>
