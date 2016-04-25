@@ -15,4 +15,14 @@ public class Utility {
         Collections.shuffle(list);
         return list;
     }
+
+    public static void saveScore(){
+//       Firebase ref = new Firebase(Constants.FIREBASE_USERS_URL);
+//        UserModel userModel = new UserModel();
+//        ref.setValue(userModel);
+    }
+
+    public static void storeUserModelToSharedPreferences(){
+
+    }
 }
