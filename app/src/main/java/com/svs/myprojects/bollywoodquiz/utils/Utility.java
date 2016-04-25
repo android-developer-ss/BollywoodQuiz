@@ -23,6 +23,6 @@ public class Utility {
     }
 
     public static void storeUserModelToSharedPreferences(){
-
+//some more lines
     }
 }
