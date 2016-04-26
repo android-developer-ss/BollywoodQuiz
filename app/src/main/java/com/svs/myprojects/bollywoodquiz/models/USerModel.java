@@ -1,7 +1,7 @@
 package com.svs.myprojects.bollywoodquiz.models;
 
 /**
- * Created by snehalsutar on 4/24/16.
+ * Created by Snehal on 4/25/16.
  */
 public class UserModel {
     private String userID;

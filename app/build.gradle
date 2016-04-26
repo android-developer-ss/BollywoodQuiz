@@ -18,29 +18,36 @@ android {
         }
     }
 
-    sourceSets {
-        main {
-            manifest.srcFile 'src/main/AndroidManifest.xml'
-            java.srcDirs = ['src/main/java','.apt_generated']
-            aidl.srcDirs = ['src/main/aidl','.apt_generated']
-            assets.srcDirs = ['src/main/assets']
-            res.srcDirs =
-                    [
-                            'src/main/res/layout/login_layouts',
-                            'src/main/res/layout',
-                            'src/main/res'
-                    ]
-        }
+//    sourceSets {
+//        main {
+//            manifest.srcFile 'src/main/AndroidManifest.xml'
+//            java.srcDirs = ['src/main/java', '.apt_generated']
+//            aidl.srcDirs = ['src/main/aidl', '.apt_generated']
+//            assets.srcDirs = ['src/main/assets']
+//            res.srcDirs =
+//                    [
+//                            'src/main/res/layout/login_layouts',
+//                            'src/main/res/layout',
+//                            'src/main/res'
+//                    ]
+//        }
+//    }
+
+    packagingOptions {
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE-FIREBASE.txt'
+        exclude 'META-INF/NOTICE'
     }
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
     compile files('libs/YouTubeAndroidPlayerApi.jar')
     compile 'com.android.support:appcompat-v7:23.3.0'
     compile 'com.android.support:design:23.3.0'
     compile 'com.google.apis:google-api-services-youtube:v3-rev164-1.21.0'
     compile 'com.android.support:support-v4:23.3.0'
-    compile 'com.firebase:firebase-client-android:2.5.2+'
+    compile 'com.firebase:firebase-client-android:2.5.2'
+    compile 'com.google.code.gson:gson:2.6.1'
 }

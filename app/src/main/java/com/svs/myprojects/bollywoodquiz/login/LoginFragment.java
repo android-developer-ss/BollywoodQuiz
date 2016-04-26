@@ -18,6 +18,7 @@ import com.firebase.client.Query;
 import com.firebase.client.ValueEventListener;
 import com.svs.myprojects.bollywoodquiz.R;
 import com.svs.myprojects.bollywoodquiz.utils.Constants;
+import com.svs.myprojects.bollywoodquiz.utils.Utility;
 
 import java.util.HashMap;
 
@@ -157,6 +158,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
                                 HashMap<String, String> hashMap = (HashMap<String, String>) dataSnapshot.getValue();
                                 if (hashMap.get("userID").equals(mUserId.getText().toString()) && hashMap.get("password").equals(mPassword.getText().toString())) {
                                     onError("Login successful");
+                                    Utility.storeUserModelToSharedPreferences(getActivity(),Utility.convertStringToUserModel(dataSnapshot.getValue().toString()));
                                     onButtonPressed(v.getId());
                                 }else{
                                     onError("User ID / Password did not match...");

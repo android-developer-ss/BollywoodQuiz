@@ -1,5 +1,12 @@
 package com.svs.myprojects.bollywoodquiz.utils;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+
+import com.firebase.client.Firebase;
+import com.google.gson.GsonBuilder;
+import com.svs.myprojects.bollywoodquiz.models.UserModel;
+
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -16,13 +23,33 @@ public class Utility {
         return list;
     }
 
-    public static void saveScore(){
-//       Firebase ref = new Firebase(Constants.FIREBASE_USERS_URL);
-//        UserModel userModel = new UserModel();
-//        ref.setValue(userModel);
+    public static void saveScoreToFirebase(Context context, UserModel userModel) {
+        Firebase ref = new Firebase(Constants.FIREBASE_USERS_URL);
+        ref.child(userModel.getUserID()).setValue(userModel);
+        storeUserModelToSharedPreferences(context, userModel);
     }
 
-    public static void storeUserModelToSharedPreferences(){
-//some more lines
+    public static void storeUserModelToSharedPreferences(Context context, UserModel userModel) {
+        SharedPreferences.Editor editor = context.getSharedPreferences(Constants.SHARED_PREF_USERS_OBJ, Context.MODE_PRIVATE).edit();
+        editor.putString(Constants.USERS_OBJ, new GsonBuilder().create().toJson(userModel));
+        editor.commit();
+    }
+
+    public static UserModel getUserModelFromSharedPreferences(Context context) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences(Constants.SHARED_PREF_USERS_OBJ, Context.MODE_PRIVATE);
+        String userModelString = sharedPreferences.getString(Constants.USERS_OBJ, null);
+        UserModel userModel = new GsonBuilder().create().fromJson(userModelString, UserModel.class);
+        return userModel;
+    }
+
+    public static UserModel convertStringToUserModel(String userModelString) {
+        return new GsonBuilder().create().fromJson(userModelString, UserModel.class);
+    }
+
+    public static boolean ifUserIsLoggedIn(Context context) {
+        if (getUserModelFromSharedPreferences(context) != null) {
+            return true;
+        } else
+            return false;
     }
 }

@@ -19,6 +19,8 @@ import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerView;
 import com.svs.myprojects.bollywoodquiz.R;
 import com.svs.myprojects.bollywoodquiz.models.QuestionModel;
+import com.svs.myprojects.bollywoodquiz.models.ScoreModel;
+import com.svs.myprojects.bollywoodquiz.models.UserModel;
 import com.svs.myprojects.bollywoodquiz.utils.Config;
 import com.svs.myprojects.bollywoodquiz.utils.Constants;
 import com.svs.myprojects.bollywoodquiz.utils.Utility;
@@ -105,7 +107,7 @@ public class VideoRound extends YouTubeBaseActivity implements YouTubePlayer.OnI
      *
      */
     private void setupViewsAndListeners() {
-        mLevel = getIntent().getStringExtra(com.svs.myprojects.bollywoodquiz.Constants.LEVEL);
+        mLevel = getIntent().getStringExtra(Constants.LEVEL);
         mQuestionModelHashMap = new HashMap<>();
         mNextButton = (Button) findViewById(R.id.next_button);
         mNextButton.setOnClickListener(this);
@@ -201,6 +203,12 @@ public class VideoRound extends YouTubeBaseActivity implements YouTubePlayer.OnI
 
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        finish();
+    }
+
     private String getTextFileContents() {
         InputStream inputStream;
 //        if (mLevel.equals(com.svs.myprojects.bollywoodquiz.Constants.OFFLINE_LEVEL_INTER)) {
@@ -257,6 +265,14 @@ public class VideoRound extends YouTubeBaseActivity implements YouTubePlayer.OnI
             }
 
             public void onFinish() {
+                UserModel userModel = Utility.getUserModelFromSharedPreferences(VideoRound.this);
+                ScoreModel scoreModel = userModel.getScore();
+                int highestScore = scoreModel.getOnline_level_1();
+                if (highestScore < mScore) {
+                        scoreModel.setOnline_level_1(mScore);
+                    userModel.setScore(scoreModel);
+                }
+                Utility.saveScoreToFirebase(VideoRound.this, userModel);
                 finish();
             }
         }.start();

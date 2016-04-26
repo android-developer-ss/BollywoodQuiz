@@ -19,6 +19,7 @@ import com.svs.myprojects.bollywoodquiz.R;
 import com.svs.myprojects.bollywoodquiz.models.ScoreModel;
 import com.svs.myprojects.bollywoodquiz.models.UserModel;
 import com.svs.myprojects.bollywoodquiz.utils.Constants;
+import com.svs.myprojects.bollywoodquiz.utils.Utility;
 
 public class RegisterFragment extends Fragment implements View.OnClickListener {
 
@@ -116,14 +117,15 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
                             @Override
                             public void onDataChange(DataSnapshot dataSnapshot) {
                                 if (dataSnapshot.hasChild(mUserId.getText().toString())) {
-                                        onError("User Id already exists.. Please use different user Id...");
-                                    } else {
-                                        UserModel newUser = new UserModel(mUserId.getText().toString(),
-                                                mUserName.getText().toString(), mPassword.getText().toString(), new ScoreModel());
-                                        mRef.child(mUserId.getText().toString()).setValue(newUser);
-                                        onError("Registration Successful");
+                                    onError("User Id already exists.. Please use different user Id...");
+                                } else {
+                                    UserModel newUser = new UserModel(mUserId.getText().toString(),
+                                            mUserName.getText().toString(), mPassword.getText().toString(), new ScoreModel());
+                                    mRef.child(mUserId.getText().toString()).setValue(newUser);
+                                    Utility.storeUserModelToSharedPreferences(getActivity(), Utility.convertStringToUserModel(dataSnapshot.getValue().toString()));
+                                    onError("Registration Successful");
                                     onButtonPressed(v.getId());
-                                    }
+                                }
 
                             }
 

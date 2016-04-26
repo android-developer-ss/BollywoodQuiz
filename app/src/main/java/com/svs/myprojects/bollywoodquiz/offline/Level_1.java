@@ -14,6 +14,8 @@ import android.widget.TextView;
 
 import com.svs.myprojects.bollywoodquiz.R;
 import com.svs.myprojects.bollywoodquiz.models.QuestionModel;
+import com.svs.myprojects.bollywoodquiz.models.ScoreModel;
+import com.svs.myprojects.bollywoodquiz.models.UserModel;
 import com.svs.myprojects.bollywoodquiz.utils.Utility;
 
 import java.io.ByteArrayOutputStream;
@@ -39,6 +41,7 @@ public class Level_1 extends AppCompatActivity implements View.OnClickListener {
     private ArrayList<Integer> mShuffledQuestionNumbers;
     private AnimatorSet mFlipVerticalAnimation;
     private AnimatorSet mFlipHorizontalAnimation;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -112,7 +115,7 @@ public class Level_1 extends AppCompatActivity implements View.OnClickListener {
             currentAnswer = mRadioButtonFalse.getText().toString().trim();
         }
         if (mCurrentQuestionModel != null && mCurrentQuestionModel.answer.equalsIgnoreCase(currentAnswer)) {
-            mScore = mScore +10;
+            mScore = mScore + 10;
             mScoreTextView.setText(String.valueOf(mScore));
             animateThumbsImage(R.drawable.thumbs_up);
         } else if (mCurrentQuestionModel != null && !mCurrentQuestionModel.answer.equalsIgnoreCase(currentAnswer)) {
@@ -125,8 +128,17 @@ public class Level_1 extends AppCompatActivity implements View.OnClickListener {
         mFlipHorizontalAnimation.start();
         if (mCurrentQuestionIndex < mQuestionModelHashMap.size())
             mCurrentQuestionModel = mQuestionModelHashMap.get(mShuffledQuestionNumbers.get(mCurrentQuestionIndex++));
-        else
+        else {
+            UserModel userModel = Utility.getUserModelFromSharedPreferences(Level_1.this);
+            ScoreModel scoreModel = userModel.getScore();
+            int highestScore = scoreModel.getOffline_level_1();
+            if (highestScore < mScore) {
+                scoreModel.setOffline_level_1(mScore);
+                userModel.setScore(scoreModel);
+            }
+            Utility.saveScoreToFirebase(Level_1.this,userModel);
             finish();
+        }
         mQuestionTextView.setText(mCurrentQuestionModel.question);
     }
 
