@@ -122,7 +122,8 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
                                     UserModel newUser = new UserModel(mUserId.getText().toString(),
                                             mUserName.getText().toString(), mPassword.getText().toString(), new ScoreModel());
                                     mRef.child(mUserId.getText().toString()).setValue(newUser);
-                                    Utility.storeUserModelToSharedPreferences(getActivity(), Utility.convertStringToUserModel(dataSnapshot.getValue().toString()));
+                                    Utility.storeUserModelToSharedPreferences(getActivity(),
+                                            newUser);
                                     onError("Registration Successful");
                                     onButtonPressed(v.getId());
                                 }

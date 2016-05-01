@@ -10,9 +10,10 @@ import android.widget.Button;
 
 import com.svs.myprojects.bollywoodquiz.online.VideoRound;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Button mButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,18 +29,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //                        .setAction("Action", null).show();
 //            }
 //        });
-        mButton = (Button) findViewById(R.id.more_details);
+        mButton = (Button) findViewById(R.id.play_board_button);
         mButton.setOnClickListener(this);
     }
 
-    public void play_offline_function(View view){
+    public void play_offline_function(View view) {
         Intent intent = new Intent(MainActivity.this, OfflineQuizMainPage.class);
         startActivity(intent);
     }
-    public void play_online_function(View view){
+
+    public void play_online_function(View view) {
         Intent intent = new Intent(MainActivity.this, VideoRound.class);
         startActivity(intent);
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -64,9 +67,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        if(v.getId()==R.id.more_details){
-//            Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
-//            startActivity(intent);
+        if (v.getId() == R.id.play_board_button) {
+            Intent intent = new Intent(MainActivity.this, PlayBoardActivity.class);
+            startActivity(intent);
         }
     }
 }
