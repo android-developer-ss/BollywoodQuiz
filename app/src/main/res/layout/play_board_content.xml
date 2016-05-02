@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/im_theatre_red"
+    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.svs.myprojects.bollywoodquiz.PlayBoardActivity"
+    tools:showIn="@layout/play_board_activity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <Button
+            android:layout_width="@dimen/play_board_button_width"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/play_board_button_top_margin"
+            android:background="@drawable/button_background"
+            android:text="View My Scores" />
+
+        <Button
+            android:layout_width="@dimen/play_board_button_width"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/play_board_button_top_margin"
+            android:background="@drawable/button_background"
+            android:text="LeaderBoard" />
+
+        <Button
+            android:id="@+id/logout_button"
+            android:layout_width="@dimen/play_board_button_width"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/play_board_button_top_margin"
+            android:background="@drawable/button_background"
+            android:text="Logout" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/bye_message_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@mipmap/im_theatre_red"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:background="#77000000"
+            android:textColor="@color/colorOrange"
+            android:gravity="center"
+            android:text="@string/string_good_bye_message"
+            android:textSize="35sp"
+            android:textStyle="italic" />
+    </FrameLayout>
+</RelativeLayout>

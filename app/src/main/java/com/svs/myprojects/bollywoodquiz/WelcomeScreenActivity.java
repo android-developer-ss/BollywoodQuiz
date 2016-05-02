@@ -8,12 +8,12 @@ import android.support.v7.app.AppCompatActivity;
 import com.svs.myprojects.bollywoodquiz.login.LoginActivity;
 import com.svs.myprojects.bollywoodquiz.utils.Utility;
 
-public class WelcomScreenActivity extends AppCompatActivity {
+public class WelcomeScreenActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_welcom_screen);
+        setContentView(R.layout.welcome_screen_activity);
 
         CountDownTimer countDownTimer = new CountDownTimer(3000,1000) {
             @Override
@@ -24,11 +24,12 @@ public class WelcomScreenActivity extends AppCompatActivity {
             @Override
             public void onFinish() {
                 Intent intent;
-                if (Utility.ifUserIsLoggedIn(WelcomScreenActivity.this)) {
-                    intent = new Intent(WelcomScreenActivity.this, MainActivity.class);
+                if (Utility.ifUserIsLoggedIn(WelcomeScreenActivity.this)) {
+                    intent = new Intent(WelcomeScreenActivity.this, MainActivity.class);
                 } else {
-                    intent = new Intent(WelcomScreenActivity.this, LoginActivity.class);
+                    intent = new Intent(WelcomeScreenActivity.this, LoginActivity.class);
                 }
+                finish();
                 startActivity(intent);
             }
         };

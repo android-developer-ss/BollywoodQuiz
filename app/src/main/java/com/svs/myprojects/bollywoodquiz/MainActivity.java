@@ -8,16 +8,23 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import com.svs.myprojects.bollywoodquiz.offline.Level_1;
+import com.svs.myprojects.bollywoodquiz.offline.Level_2;
 import com.svs.myprojects.bollywoodquiz.online.VideoRound;
+import com.svs.myprojects.bollywoodquiz.utils.Constants;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private Button mButton;
+    private Button mPlayBoardButton;
+    private Button mOfflineLevel_1_Button;
+    private Button mOfflineLevel_2_Button;
+    private Button mOfflineLevel_3_Button;
+    private Button mOnlineLevel_6_Button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.main_activity);
 //        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 //        setSupportActionBar(toolbar);
 //
@@ -29,19 +36,33 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //                        .setAction("Action", null).show();
 //            }
 //        });
-        mButton = (Button) findViewById(R.id.play_board_button);
-        mButton.setOnClickListener(this);
+
+        setupViews();
+
     }
 
-    public void play_offline_function(View view) {
-        Intent intent = new Intent(MainActivity.this, OfflineQuizMainPage.class);
-        startActivity(intent);
+    private void setupViews() {
+        mPlayBoardButton = (Button) findViewById(R.id.play_board_button);
+        mOfflineLevel_1_Button = (Button) findViewById(R.id.level_1_offline);
+        mOfflineLevel_2_Button = (Button) findViewById(R.id.level_2_offline);
+        mOfflineLevel_3_Button = (Button) findViewById(R.id.level_3_offline);
+        mOnlineLevel_6_Button = (Button) findViewById(R.id.level_6_video);
+        mPlayBoardButton.setOnClickListener(this);
+        mOfflineLevel_1_Button.setOnClickListener(this);
+        mOfflineLevel_2_Button.setOnClickListener(this);
+        mOfflineLevel_3_Button.setOnClickListener(this);
+        mOnlineLevel_6_Button.setOnClickListener(this);
     }
 
-    public void play_online_function(View view) {
-        Intent intent = new Intent(MainActivity.this, VideoRound.class);
-        startActivity(intent);
-    }
+//    public void play_offline_function(View view) {
+//        Intent intent = new Intent(MainActivity.this, OfflineQuizMainPage.class);
+//        startActivity(intent);
+//    }
+//
+//    public void play_online_function(View view) {
+//        Intent intent = new Intent(MainActivity.this, VideoRound.class);
+//        startActivity(intent);
+//    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -67,9 +88,32 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        if (v.getId() == R.id.play_board_button) {
-            Intent intent = new Intent(MainActivity.this, PlayBoardActivity.class);
-            startActivity(intent);
+        switch (v.getId()) {
+            case R.id.play_board_button:
+                finish();
+                startIntent(PlayBoardActivity.class, null);
+                break;
+            case R.id.level_1_offline:
+                startIntent(Level_1.class, null);
+                break;
+            case R.id.level_2_offline:
+                startIntent(Level_2.class, Constants.OFFLINE_LEVEL_INTER);
+                break;
+            case R.id.level_3_offline:
+                startIntent(Level_2.class, Constants.OFFLINE_LEVEL_EXPERT);
+                break;
+            case R.id.level_6_video:
+                startIntent(VideoRound.class, null);
+                break;
         }
+
+    }
+
+    private void startIntent(Class activityClass, String level) {
+        Intent intent = new Intent(MainActivity.this, activityClass);
+        if (level != null) {
+            intent.putExtra(Constants.LEVEL, level);
+        }
+        startActivity(intent);
     }
 }

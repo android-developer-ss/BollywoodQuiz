@@ -52,4 +52,9 @@ public class Utility {
         } else
             return false;
     }
+
+    public static void cleanSharedPreferences(Context context) {
+        SharedPreferences preferences = context.getSharedPreferences(Constants.SHARED_PREF_USERS_OBJ, Context.MODE_PRIVATE);
+        preferences.edit().clear().commit();
+    }
 }

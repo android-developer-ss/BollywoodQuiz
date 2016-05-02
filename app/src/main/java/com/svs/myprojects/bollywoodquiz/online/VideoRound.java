@@ -34,9 +34,9 @@ import java.util.HashMap;
 
 public class VideoRound extends YouTubeBaseActivity implements YouTubePlayer.OnInitializedListener, View.OnClickListener {
     private static final int RECOVERY_REQUEST = 1;
+    public static String LOG_TAG = VideoRound.class.getSimpleName();
     private YouTubePlayerView mYouTubePlayerView;
     private YouTubePlayer mYouTubePlayer;
-    public static String LOG_TAG = VideoRound.class.getSimpleName();
     private HashMap<Integer, QuestionModel> mQuestionModelHashMap;
     private QuestionModel mCurrentQuestionModel;
     private Button mNextButton;
@@ -61,11 +61,8 @@ public class VideoRound extends YouTubeBaseActivity implements YouTubePlayer.OnI
         mYouTubePlayerView = (YouTubePlayerView) findViewById(R.id.youtube_view);
         mYouTubePlayerView.initialize(Config.YOUTUBE_API_KEY, this);
 
-
         setupViewsAndListeners();
         prepareQuestionList();
-
-
     }
 
     /***********************************************************************************************
@@ -206,6 +203,8 @@ public class VideoRound extends YouTubeBaseActivity implements YouTubePlayer.OnI
     @Override
     protected void onPause() {
         super.onPause();
+        mYouTubePlayer.release();
+        mCountDownTimer.cancel();
         finish();
     }
 
