@@ -10,9 +10,45 @@ public class ScoreModel {
     private int online_level_1;
     private int online_level_2;
     private int online_level_3;
-
-    public ScoreModel() {
-    }
+//
+//    private String name;
+//    private String descriptions;
+//    private int level;
+//    private int score;
+//    public ScoreModel() {
+//    }
+//
+//    public String getName() {
+//        return name;
+//    }
+//
+//    public void setName(String name) {
+//        this.name = name;
+//    }
+//
+//    public String getDescriptions() {
+//        return descriptions;
+//    }
+//
+//    public void setDescriptions(String descriptions) {
+//        this.descriptions = descriptions;
+//    }
+//
+//    public int getLevel() {
+//        return level;
+//    }
+//
+//    public void setLevel(int level) {
+//        this.level = level;
+//    }
+//
+//    public int getScore() {
+//        return score;
+//    }
+//
+//    public void setScore(int score) {
+//        this.score = score;
+//    }
 
     public ScoreModel(int offline_level_1, int offline_level_2, int offline_level_3, int online_level_1, int online_level_2, int online_level_3) {
         this.offline_level_1 = offline_level_1;

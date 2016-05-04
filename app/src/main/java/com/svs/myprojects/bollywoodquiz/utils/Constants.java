@@ -14,4 +14,5 @@ public class Constants {
     public static final String OFFLINE_LEVEL_EXPERT = "expert";
     public static final String SHARED_PREF_USERS_OBJ = "SHARED_PREF_USERS_OBJ";
     public static final String USERS_OBJ = "USERS_OBJ";
+    public static final int MAX_LEVEL = 6;
 }

@@ -1,5 +1,7 @@
 package com.svs.myprojects.bollywoodquiz.models;
 
+import java.util.ArrayList;
+
 /**
  * Created by Snehal on 4/25/16.
  */
@@ -8,12 +10,20 @@ public class UserModel {
     private String fullName;
     private String password;
     private ScoreModel score;
+    private ArrayList<ScoreModel> scoreModelArrayList;
 
     public UserModel(String userID, String fullName, String password, ScoreModel score) {
         this.userID = userID;
         this.fullName = fullName;
         this.password = password;
         this.score = score;
+//        scoreModelArrayList = new ArrayList<>();
+////        String[] description = getStringArray(R.array.level_description);
+//        for (int i = 0; i < Constants.MAX_LEVEL; i++) {
+//            ScoreModel scoreModel = new ScoreModel();
+//            scoreModel.setLevel(i + 1);
+////            scoreModel.setDescriptions();
+//        }
     }
 
     public String getUserID() {

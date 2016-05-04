@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="level_description">
+        <item>Offline</item>
+        <item>Offline</item>
+        <item>Offline</item>
+        <item>Images </item>
+        <item>Audio</item>
+        <item>Video</item>
+    </string-array>
+</resources>
