@@ -2,12 +2,13 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@mipmap/im_theatre_red"
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.svs.myprojects.bollywoodquiz.PlayBoardActivity"
+    tools:context=".playboard.PlayBoardActivity"
     tools:showIn="@layout/play_board_activity">
 
     <LinearLayout
@@ -16,6 +17,7 @@
         android:orientation="vertical">
 
         <Button
+            android:id="@+id/view_my_score_button"
             android:layout_width="@dimen/play_board_button_width"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -24,6 +26,7 @@
             android:text="View My Scores" />
 
         <Button
+            android:id="@+id/view_leader_board_button"
             android:layout_width="@dimen/play_board_button_width"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -53,9 +56,9 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:background="#77000000"
-            android:textColor="@color/colorOrange"
             android:gravity="center"
             android:text="@string/string_good_bye_message"
+            android:textColor="@color/colorOrange"
             android:textSize="35sp"
             android:textStyle="italic" />
     </FrameLayout>

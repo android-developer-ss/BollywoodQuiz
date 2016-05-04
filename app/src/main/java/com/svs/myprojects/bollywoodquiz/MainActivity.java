@@ -11,6 +11,7 @@ import android.widget.Button;
 import com.svs.myprojects.bollywoodquiz.offline.Level_1;
 import com.svs.myprojects.bollywoodquiz.offline.Level_2;
 import com.svs.myprojects.bollywoodquiz.online.VideoRound;
+import com.svs.myprojects.bollywoodquiz.playboard.PlayBoardActivity;
 import com.svs.myprojects.bollywoodquiz.utils.Constants;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {

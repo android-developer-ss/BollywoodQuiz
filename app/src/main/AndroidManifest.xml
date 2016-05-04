@@ -64,7 +64,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".PlayBoardActivity"
+            android:name=".playboard.PlayBoardActivity"
             android:label="@string/title_activity_play_board"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
