@@ -119,7 +119,7 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
                                     onError("User Id already exists.. Please use different user Id...");
                                 } else {
                                     UserModel newUser = new UserModel(mUserId.getText().toString(),
-                                            mUserName.getText().toString(), mPassword.getText().toString(), getActivity());
+                                            mUserName.getText().toString(), mPassword.getText().toString());
                                     mRef.child(mUserId.getText().toString()).setValue(newUser);
                                     Utility.storeUserModelToSharedPreferences(getActivity(),
                                             newUser);

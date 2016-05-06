@@ -265,12 +265,13 @@ public class VideoRound extends YouTubeBaseActivity implements YouTubePlayer.OnI
 
             public void onFinish() {
                 UserModel userModel = Utility.getUserModelFromSharedPreferences(VideoRound.this);
-                ScoreModel scoreModel = userModel.getScore();
-                int highestScore = scoreModel.getOnline_level_1();
-                if (highestScore < mScore) {
-                        scoreModel.setOnline_level_1(mScore);
-                    userModel.setScore(scoreModel);
-                }
+//                ScoreModel scoreModel = userModel.getScore();
+//                int highestScore = scoreModel.getOnline_level_1();
+//                if (highestScore < mScore) {
+//                        scoreModel.setOnline_level_1(mScore);
+//                    userModel.setScore(scoreModel);
+//                }
+                userModel = Utility.updateScore(4, mScore, userModel);
                 Utility.saveScoreToFirebase(VideoRound.this, userModel);
                 finish();
             }

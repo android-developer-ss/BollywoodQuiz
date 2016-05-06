@@ -14,7 +14,6 @@ import android.widget.TextView;
 
 import com.svs.myprojects.bollywoodquiz.R;
 import com.svs.myprojects.bollywoodquiz.models.QuestionModel;
-import com.svs.myprojects.bollywoodquiz.models.ScoreModel;
 import com.svs.myprojects.bollywoodquiz.models.UserModel;
 import com.svs.myprojects.bollywoodquiz.utils.Utility;
 
@@ -130,10 +129,8 @@ public class Level_1 extends AppCompatActivity implements View.OnClickListener {
             mCurrentQuestionModel = mQuestionModelHashMap.get(mShuffledQuestionNumbers.get(mCurrentQuestionIndex++));
         else {
             UserModel userModel = Utility.getUserModelFromSharedPreferences(Level_1.this);
-            int level = 1;
-           userModel= Utility.updateScore(level,mScore,userModel);
-
-            Utility.saveScoreToFirebase(Level_1.this,userModel);
+            userModel = Utility.updateScore(1, mScore, userModel);
+            Utility.saveScoreToFirebase(Level_1.this, userModel);
             finish();
         }
         mQuestionTextView.setText(mCurrentQuestionModel.question);

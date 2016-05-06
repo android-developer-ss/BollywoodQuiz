@@ -5,7 +5,6 @@ import android.content.SharedPreferences;
 
 import com.firebase.client.Firebase;
 import com.google.gson.GsonBuilder;
-import com.svs.myprojects.bollywoodquiz.models.ScoreModel;
 import com.svs.myprojects.bollywoodquiz.models.UserModel;
 
 import java.util.ArrayList;
@@ -26,7 +25,7 @@ public class Utility {
 
     public static void saveScoreToFirebase(Context context, UserModel userModel) {
         Firebase ref = new Firebase(Constants.FIREBASE_USERS_URL);
-        ref.child(userModel.getUserID()).setValue(userModel);
+        ref.child(userModel.userID).setValue(userModel);
         storeUserModelToSharedPreferences(context, userModel);
     }
 
@@ -59,13 +58,16 @@ public class Utility {
         preferences.edit().clear().commit();
     }
 
-    public static UserModel updateScore(int level, int mScore, UserModel userModel) {
-
-        ScoreModel scoreModel = userModel.getScore();
-        int highestScore = scoreModel.getOffline_level_1();
-        if (highestScore < mScore) {
-            scoreModel.setOffline_level_1(mScore);
-            userModel.setScore(scoreModel);
+    public static UserModel updateScore(int level, int currentScore, UserModel userModel) {
+//        ScoreModel scoreModel = userModel.getScore();
+//        int highestScore = scoreModel.getOffline_level_1();
+//        if (highestScore < mScore) {
+//            scoreModel.setOffline_level_1(mScore);
+//            userModel.setScore(scoreModel);
+//        }
+//        HashMap<Integer, Integer> scoreHashMap = userModel.scoreHashMap;
+        if (userModel.scoreHashMap.containsKey(level) && currentScore > userModel.scoreHashMap.get(level)) {
+            userModel.scoreHashMap.put(level, currentScore);
         }
         return userModel;
     }

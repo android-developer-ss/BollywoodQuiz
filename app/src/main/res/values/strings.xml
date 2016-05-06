@@ -7,7 +7,7 @@
     <string name="title_activity_beginner">Beginner</string>
     <string name="title_activity_level_2">Level_2</string>
     <string name="title_activity_video_round">VideoRound</string>
-    <string name="player_error">Player Error</string>
+    <string name="player_error">Player Error %1$s</string>
     <string name="title_activity_login">LoginActivity</string>
 
     <string name="register">Register</string>
@@ -34,8 +34,4 @@
         Goodbyes are not the end...\n
         They simply mean we\'ll miss you...\n
         Until we meet again...</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-
 </resources>

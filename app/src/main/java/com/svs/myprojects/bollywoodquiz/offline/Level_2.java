@@ -14,7 +14,6 @@ import android.widget.TextView;
 
 import com.svs.myprojects.bollywoodquiz.R;
 import com.svs.myprojects.bollywoodquiz.models.QuestionModel;
-import com.svs.myprojects.bollywoodquiz.models.ScoreModel;
 import com.svs.myprojects.bollywoodquiz.models.UserModel;
 import com.svs.myprojects.bollywoodquiz.utils.Constants;
 import com.svs.myprojects.bollywoodquiz.utils.Utility;
@@ -207,16 +206,16 @@ public class Level_2 extends AppCompatActivity implements View.OnClickListener {
 
             public void onFinish() {
                 UserModel userModel = Utility.getUserModelFromSharedPreferences(Level_2.this);
-                ScoreModel scoreModel = userModel.getScore();
-                int highestScore = mLevel.equals(Constants.OFFLINE_LEVEL_INTER) ? scoreModel.getOffline_level_2() : scoreModel.getOffline_level_3();
-
-                if (highestScore < mScore) {
-                    if (mLevel.equals(Constants.OFFLINE_LEVEL_INTER))
-                        scoreModel.setOffline_level_2(mScore);
-                    else
-                        scoreModel.setOffline_level_3(mScore);
-                    userModel.setScore(scoreModel);
-                }
+//                ScoreModel scoreModel = userModel.s;
+//                int highestScore = mLevel.equals(Constants.OFFLINE_LEVEL_INTER) ? scoreModel.getOffline_level_2() : scoreModel.getOffline_level_3();
+//
+//                if (highestScore < mScore) {
+                if (mLevel.equals(Constants.OFFLINE_LEVEL_INTER))
+                    userModel = Utility.updateScore(2, mScore, userModel); //scoreModel.setOffline_level_2(mScore);
+                else
+                    userModel = Utility.updateScore(3, mScore, userModel);//scoreModel.setOffline_level_3(mScore);
+//                    userModel.setScore(scoreModel);
+//                }
                 Utility.saveScoreToFirebase(Level_2.this, userModel);
 
                 finish();
