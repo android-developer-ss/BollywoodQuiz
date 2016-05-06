@@ -130,12 +130,9 @@ public class Level_1 extends AppCompatActivity implements View.OnClickListener {
             mCurrentQuestionModel = mQuestionModelHashMap.get(mShuffledQuestionNumbers.get(mCurrentQuestionIndex++));
         else {
             UserModel userModel = Utility.getUserModelFromSharedPreferences(Level_1.this);
-            ScoreModel scoreModel = userModel.getScore();
-            int highestScore = scoreModel.getOffline_level_1();
-            if (highestScore < mScore) {
-                scoreModel.setOffline_level_1(mScore);
-                userModel.setScore(scoreModel);
-            }
+            int level = 1;
+           userModel= Utility.updateScore(level,mScore,userModel);
+
             Utility.saveScoreToFirebase(Level_1.this,userModel);
             finish();
         }

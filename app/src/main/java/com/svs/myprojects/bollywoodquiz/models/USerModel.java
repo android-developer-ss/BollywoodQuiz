@@ -1,5 +1,9 @@
 package com.svs.myprojects.bollywoodquiz.models;
 
+import android.content.Context;
+
+import com.svs.myprojects.bollywoodquiz.utils.Constants;
+
 import java.util.ArrayList;
 
 /**
@@ -12,18 +16,15 @@ public class UserModel {
     private ScoreModel score;
     private ArrayList<ScoreModel> scoreModelArrayList;
 
-    public UserModel(String userID, String fullName, String password, ScoreModel score) {
+    public UserModel(String userID, String fullName, String password, Context context) {
         this.userID = userID;
         this.fullName = fullName;
         this.password = password;
-        this.score = score;
-//        scoreModelArrayList = new ArrayList<>();
-////        String[] description = getStringArray(R.array.level_description);
-//        for (int i = 0; i < Constants.MAX_LEVEL; i++) {
-//            ScoreModel scoreModel = new ScoreModel();
-//            scoreModel.setLevel(i + 1);
-////            scoreModel.setDescriptions();
-//        }
+        scoreModelArrayList = new ArrayList<>();
+        for (int i = 0; i < Constants.MAX_LEVEL; i++) {
+            ScoreModel scoreModel = new ScoreModel();
+            scoreModel.setLevel(i + 1);
+        }
     }
 
     public String getUserID() {

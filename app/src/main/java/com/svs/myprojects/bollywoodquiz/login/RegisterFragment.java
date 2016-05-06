@@ -16,7 +16,6 @@ import com.firebase.client.FirebaseError;
 import com.firebase.client.Query;
 import com.firebase.client.ValueEventListener;
 import com.svs.myprojects.bollywoodquiz.R;
-import com.svs.myprojects.bollywoodquiz.models.ScoreModel;
 import com.svs.myprojects.bollywoodquiz.models.UserModel;
 import com.svs.myprojects.bollywoodquiz.utils.Constants;
 import com.svs.myprojects.bollywoodquiz.utils.Utility;
@@ -120,7 +119,7 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
                                     onError("User Id already exists.. Please use different user Id...");
                                 } else {
                                     UserModel newUser = new UserModel(mUserId.getText().toString(),
-                                            mUserName.getText().toString(), mPassword.getText().toString(), new ScoreModel());
+                                            mUserName.getText().toString(), mPassword.getText().toString(), getActivity());
                                     mRef.child(mUserId.getText().toString()).setValue(newUser);
                                     Utility.storeUserModelToSharedPreferences(getActivity(),
                                             newUser);

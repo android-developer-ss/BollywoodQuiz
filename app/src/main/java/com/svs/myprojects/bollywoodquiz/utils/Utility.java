@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 
 import com.firebase.client.Firebase;
 import com.google.gson.GsonBuilder;
+import com.svs.myprojects.bollywoodquiz.models.ScoreModel;
 import com.svs.myprojects.bollywoodquiz.models.UserModel;
 
 import java.util.ArrayList;
@@ -56,5 +57,16 @@ public class Utility {
     public static void cleanSharedPreferences(Context context) {
         SharedPreferences preferences = context.getSharedPreferences(Constants.SHARED_PREF_USERS_OBJ, Context.MODE_PRIVATE);
         preferences.edit().clear().commit();
+    }
+
+    public static UserModel updateScore(int level, int mScore, UserModel userModel) {
+
+        ScoreModel scoreModel = userModel.getScore();
+        int highestScore = scoreModel.getOffline_level_1();
+        if (highestScore < mScore) {
+            scoreModel.setOffline_level_1(mScore);
+            userModel.setScore(scoreModel);
+        }
+        return userModel;
     }
 }
