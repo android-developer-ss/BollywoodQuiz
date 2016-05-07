@@ -17,6 +17,7 @@ import com.firebase.client.FirebaseError;
 import com.firebase.client.Query;
 import com.firebase.client.ValueEventListener;
 import com.svs.myprojects.bollywoodquiz.R;
+import com.svs.myprojects.bollywoodquiz.listeners.OnFragmentInteractionListener;
 import com.svs.myprojects.bollywoodquiz.utils.Constants;
 import com.svs.myprojects.bollywoodquiz.utils.Utility;
 
@@ -77,9 +78,9 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
         }
     }
 
-    public void onError(String message) {
+    public void displayMessage(String message) {
         if (mListener != null) {
-            mListener.onError(message);
+            mListener.displayMessage(message);
         }
     }
 
@@ -116,7 +117,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
 //                                    if (hashMap.get("userID").equals(mUserId.getText().toString()) &&
 //                                            hashMap.get("password").equals(mPassword.getText().toString())) {
 //                                        userExists[0] = true;
-//                                        onError("Login successful");
+//                                        displayMessage("Login successful");
 //                                        onButtonPressed(v.getId());
 //                                    }
 //                                }
@@ -145,11 +146,10 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
 //                    });
 //
 //                    if (!userExists[0]) {
-//                        onError("User ID / Password did not match...");
+//                        displayMessage("User ID / Password did not match...");
 //                    }
 
                     Query queryRef = mRef.orderByKey();
-
                     queryRef.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
@@ -157,19 +157,19 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
                                 dataSnapshot = dataSnapshot.child(mUserId.getText().toString());
                                 HashMap<String, String> hashMap = (HashMap<String, String>) dataSnapshot.getValue();
                                 if (hashMap.get("userID").equals(mUserId.getText().toString()) && hashMap.get("password").equals(mPassword.getText().toString())) {
-                                    onError("Login successful");
-                                    Utility.storeUserModelToSharedPreferences(getActivity(),Utility.convertStringToUserModel(dataSnapshot.getValue().toString()));
+                                    displayMessage("Login successful");
+                                    Utility.storeUserModelToSharedPreferences(getActivity(), Utility.convertStringToUserModel(dataSnapshot.getValue().toString()));
                                     onButtonPressed(v.getId());
-                                }else{
-                                    onError("User ID / Password did not match...");
+                                } else {
+                                    displayMessage("User ID / Password did not match...");
                                 }
-//                                onError("User Id already exists.. Please use different user Id...");
+//                                displayMessage("User Id already exists.. Please use different user Id...");
                             } else {
-                                onError("User ID / Password did not match...");
+                                displayMessage("User ID / Password did not match...");
 //                                UserModel newUser = new UserModel(mUserId.getText().toString(),
 //                                        mUserName.getText().toString(), mPassword.getText().toString(), new ScoreModel());
 //                                mRef.child(mUserId.getText().toString()).setValue(newUser);
-//                                onError("Registration Successful");
+//                                displayMessage("Registration Successful");
 //                                onButtonPressed(v.getId());
                             }
 
@@ -182,7 +182,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
                     });
 //                    onButtonPressed(v.getId());
                 } else {
-                    onError(getResources().getString(R.string.string_fill_all_fields));
+                    displayMessage(getResources().getString(R.string.string_fill_all_fields));
                 }
                 break;
             case R.id.register_here:
@@ -200,11 +200,5 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
             return false;
         }
         return true;
-    }
-
-    public interface OnFragmentInteractionListener {
-        void onFragmentInteraction(int viewId);
-
-        void onError(String message);
     }
 }

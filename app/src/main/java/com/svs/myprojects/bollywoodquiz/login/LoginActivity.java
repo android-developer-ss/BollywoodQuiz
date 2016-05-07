@@ -14,10 +14,10 @@ import android.widget.ImageView;
 import com.firebase.client.Firebase;
 import com.svs.myprojects.bollywoodquiz.MainActivity;
 import com.svs.myprojects.bollywoodquiz.R;
+import com.svs.myprojects.bollywoodquiz.listeners.OnFragmentInteractionListener;
 
 public class LoginActivity extends AppCompatActivity
-        implements FragmentManager.OnBackStackChangedListener,
-        LoginFragment.OnFragmentInteractionListener, RegisterFragment.OnFragmentInteractionListener,
+        implements FragmentManager.OnBackStackChangedListener, OnFragmentInteractionListener,
         View.OnClickListener {
 
     private ImageView ic_back_arrow;
@@ -101,7 +101,7 @@ public class LoginActivity extends AppCompatActivity
     }
 
     @Override
-    public void onError(String message) {
+    public void displayMessage(String message) {
         Snackbar.make(mCoordinatorLayout, message, Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show();
     }

@@ -16,6 +16,7 @@ import com.firebase.client.FirebaseError;
 import com.firebase.client.Query;
 import com.firebase.client.ValueEventListener;
 import com.svs.myprojects.bollywoodquiz.R;
+import com.svs.myprojects.bollywoodquiz.listeners.OnFragmentInteractionListener;
 import com.svs.myprojects.bollywoodquiz.models.UserModel;
 import com.svs.myprojects.bollywoodquiz.utils.Constants;
 import com.svs.myprojects.bollywoodquiz.utils.Utility;
@@ -81,9 +82,9 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
         }
     }
 
-    public void onError(String message) {
+    public void displayMessage(String message) {
         if (mListener != null) {
-            mListener.onError(message);
+            mListener.displayMessage(message);
         }
     }
 
@@ -116,14 +117,14 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
                             @Override
                             public void onDataChange(DataSnapshot dataSnapshot) {
                                 if (dataSnapshot.hasChild(mUserId.getText().toString())) {
-                                    onError("User Id already exists.. Please use different user Id...");
+                                    displayMessage("User Id already exists.. Please use different user Id...");
                                 } else {
                                     UserModel newUser = new UserModel(mUserId.getText().toString(),
                                             mUserName.getText().toString(), mPassword.getText().toString());
                                     mRef.child(mUserId.getText().toString()).setValue(newUser);
                                     Utility.storeUserModelToSharedPreferences(getActivity(),
                                             newUser);
-                                    onError("Registration Successful");
+                                    displayMessage("Registration Successful");
                                     onButtonPressed(v.getId());
                                 }
 
@@ -142,19 +143,19 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
 //                                dataSnapshot.child("aa").exists();
 //                                HashMap<String, String> hashMap = (HashMap<String, String>) dataSnapshot.getValue();
 //                                if (hashMap != null && hashMap.containsKey("userID") && hashMap.get("userID").equals(mUserId.getText().toString())) {
-//                                    onError("User Id already exists.. Please use different user Id...");
+//                                    displayMessage("User Id already exists.. Please use different user Id...");
 //                                } else {
 //                                    UserModel alan = new UserModel(mUserId.getText().toString(),
 //                                            mUserName.getText().toString(), mPassword.getText().toString(), new ScoreModel());
 //                                    mRef.setValue(alan);
-//                                    onError("Success");
+//                                    displayMessage("Success");
 //                                }
 //
 //
 ////                                if (dataSnapshot.getKey().equals(mUserId.getText().toString())) {
 ////                                    userExists[0] = true;
 ////
-////                                    onError("User Id already exists.. Please use different user Id...");
+////                                    displayMessage("User Id already exists.. Please use different user Id...");
 ////                                }
 //                            }
 //
@@ -171,7 +172,7 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
 //                                if (dataSnapshot.getKey().equals(mUserId.getText().toString())) {
 //                                    userExists[0] = true;
 //
-//                                    onError("User Id already exists.. Please use different user Id...");
+//                                    displayMessage("User Id already exists.. Please use different user Id...");
 //                                }
 //                            }
 //
@@ -208,9 +209,9 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
                         break;
 //                        onButtonPressed(v.getId());
                     } else
-                        onError(getResources().getString(R.string.password_do_not_match));
+                        displayMessage(getResources().getString(R.string.password_do_not_match));
                 } else {
-                    onError(getResources().getString(R.string.string_fill_all_fields));
+                    displayMessage(getResources().getString(R.string.string_fill_all_fields));
                 }
                 break;
         }
@@ -238,9 +239,4 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
         return true;
     }
 
-    public interface OnFragmentInteractionListener {
-        void onFragmentInteraction(int viewId);
-
-        void onError(String message);
-    }
 }
