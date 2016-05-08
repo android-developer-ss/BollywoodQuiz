@@ -10,13 +10,16 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 
 import com.svs.myprojects.bollywoodquiz.R;
+import com.svs.myprojects.bollywoodquiz.utils.AlertDialogFragment;
 import com.svs.myprojects.bollywoodquiz.utils.Utility;
+import com.svs.myprojects.bollywoodquiz.views.BackButtonView;
 
 public class PlayBoardActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Button logoutButton;
     private Button viewMyScoreButton;
     private Button viewLeaderBoardButton;
+    private BackButtonView mBackButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +49,9 @@ public class PlayBoardActivity extends AppCompatActivity implements View.OnClick
 
         viewLeaderBoardButton = (Button) findViewById(R.id.view_leader_board_button);
         viewLeaderBoardButton.setOnClickListener(this);
+
+        mBackButton = (BackButtonView) findViewById(R.id.back_button);
+        mBackButton.setOnClickListener(this);
     }
 
 
@@ -59,8 +65,10 @@ public class PlayBoardActivity extends AppCompatActivity implements View.OnClick
                 replaceFragment(ViewLeaderBoardFragment.newInstance(), ViewLeaderBoardFragment.TAG);
                 break;
             case R.id.logout_button:
-                showGoodByeMessage();
-                Utility.cleanSharedPreferences(PlayBoardActivity.this);
+                callLogoutConfirmation();
+                break;
+            case R.id.back_button:
+                finish();
                 break;
         }
     }
@@ -80,6 +88,27 @@ public class PlayBoardActivity extends AppCompatActivity implements View.OnClick
             }
         };
         countDownTimer.start();
+    }
+
+    private void callLogoutConfirmation() {
+
+        String Message = "Are you sure you want to Logout? ";
+        final AlertDialogFragment dialogFragment = AlertDialogFragment.newInstance("", Message, "Yes", "No");
+        dialogFragment.setOnPositiveButtonClickListener(new AlertDialogFragment.OnPositiveButtonClickListener() {
+            @Override
+            public void onPositiveButtonListener() {
+                showGoodByeMessage();
+                Utility.cleanSharedPreferences(PlayBoardActivity.this);
+            }
+        });
+        dialogFragment.setOnNegativeButtonClickListener(new AlertDialogFragment.OnNegativeButtonClickListener() {
+            @Override
+            public void onNegativeButtonListener() {
+                dialogFragment.dismiss();
+            }
+        });
+        dialogFragment.show(getSupportFragmentManager(), "DeleteAlert");
+
     }
 
     public void replaceFragment(Fragment fragment, String TAG) {

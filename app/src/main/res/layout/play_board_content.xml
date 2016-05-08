@@ -11,6 +11,12 @@
     tools:context=".playboard.PlayBoardActivity"
     tools:showIn="@layout/play_board_activity">
 
+    <!--<include layout="@layout/back_button" />-->
+    <com.svs.myprojects.bollywoodquiz.views.BackButtonView
+        android:id="@+id/back_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

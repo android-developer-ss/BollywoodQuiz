@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:level_button="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -15,17 +16,17 @@
 
     <Button
         android:id="@+id/play_board_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
         android:layout_alignParentRight="true"
-        android:background="@android:color/transparent"
-        android:padding="20dp"
+        android:background="@drawable/im_play_boardd"
         android:text="PLAY BOARD" />
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="30dp">
+        android:layout_below="@id/play_board_button"
+        android:layout_marginTop="10dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -33,46 +34,59 @@
             android:layout_centerInParent="true"
             android:orientation="vertical">
 
-            <Button
+            <com.svs.myprojects.bollywoodquiz.views.LevelButtonView
                 android:id="@+id/level_1_offline"
-                style="@style/ButtonStyle"
-                android:layout_width="@dimen/button_width"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/level_1_button_title"/>
+                android:clickable="true"
+                level_button:button_content="(Offline)"
+                level_button:button_description="This level has simple questions with true and false answers"
+                level_button:button_text="LEVEL 1" />
 
-            <Button
+            <com.svs.myprojects.bollywoodquiz.views.LevelButtonView
                 android:id="@+id/level_2_offline"
-                style="@style/ButtonStyle"
-                android:layout_width="@dimen/button_width"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/level_2_button_title" />
+                android:clickable="true"
+                level_button:button_content="(Offline)"
+                level_button:button_description="This level has simple questions with true and false answers"
+                level_button:button_text="LEVEL 2" />
 
-            <Button
+            <com.svs.myprojects.bollywoodquiz.views.LevelButtonView
                 android:id="@+id/level_3_offline"
-                style="@style/ButtonStyle"
-                android:layout_width="@dimen/button_width"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/level_3_button_title" />
+                android:clickable="true"
+                level_button:button_content="(Offline)"
+                level_button:button_description="This level has simple questions with true and false answers"
+                level_button:button_text="LEVEL 3" />
 
-            <Button
-                android:id="@+id/level_4_images"
-                style="@style/ButtonStyle"
-                android:layout_width="@dimen/button_width"
+            <com.svs.myprojects.bollywoodquiz.views.LevelButtonView
+                android:id="@+id/level_4_offline"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/level_4_button_title"/>
+                android:clickable="true"
+                level_button:button_content="(Offline Images)"
+                level_button:button_description="This level has simple questions with true and false answers"
+                level_button:button_text="LEVEL 4" />
 
-            <Button
-                android:id="@+id/level_5_audio"
-                style="@style/ButtonStyle"
-                android:layout_width="@dimen/button_width"
+            <com.svs.myprojects.bollywoodquiz.views.LevelButtonView
+                android:id="@+id/level_5_offline"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/level_5_button_title" />
-            <Button
+                android:clickable="true"
+                level_button:button_content="(Offline Audio)"
+                level_button:button_description="This level has simple questions with true and false answers"
+                level_button:button_text="LEVEL 5" />
+
+            <com.svs.myprojects.bollywoodquiz.views.LevelButtonView
                 android:id="@+id/level_6_video"
-                style="@style/ButtonStyle"
-                android:layout_width="@dimen/button_width"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/level_6_button_title" />
+                android:clickable="true"
+                level_button:button_content="(Online Video )"
+                level_button:button_description="This level has simple questions with true and false answers"
+                level_button:button_text="LEVEL 6" />
         </LinearLayout>
     </ScrollView>
 </RelativeLayout>

@@ -9,6 +9,7 @@ import com.svs.myprojects.bollywoodquiz.models.UserModel;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * Created by Snehal on 4/5/16.
@@ -66,9 +67,32 @@ public class Utility {
 //            userModel.setScore(scoreModel);
 //        }
 //        HashMap<Integer, Integer> scoreHashMap = userModel.scoreHashMap;
-        if (userModel.scoreHashMap.containsKey(level) && currentScore > userModel.scoreHashMap.get(level)) {
+        if (userModel.scoreHashMap == null)
+            userModel.scoreHashMap = new HashMap<>();
+
+        if (!userModel.scoreHashMap.containsKey(level)) {
+            userModel.scoreHashMap.put(level, currentScore);
+        } else if (currentScore > userModel.scoreHashMap.get(level)) {
             userModel.scoreHashMap.put(level, currentScore);
         }
+//        updateScoreInFireBase(userModel);
         return userModel;
     }
+
+//    private static void updateScoreInFireBase(final UserModel userModel) {
+//        final Firebase ref = new Firebase(Constants.FIREBASE_USERS_URL);
+//        Query queryRef = ref.orderByKey();
+//        queryRef.limitToFirst(1);
+//        queryRef.addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                ref.child(userModel.userID).setValue(userModel);
+//            }
+//
+//            @Override
+//            public void onCancelled(FirebaseError firebaseError) {
+//
+//            }
+//        });
+//    }
 }

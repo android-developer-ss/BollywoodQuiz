@@ -18,20 +18,20 @@
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".OfflineQuizMainPage"
-            android:label="@string/title_activity_offline_quiz_main_page"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".OfflineBeginner"
-            android:label="@string/title_activity_offline_beginner"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".OfflineIntermediate"
-            android:label="@string/title_activity_offline_intermediate"
-            android:theme="@style/AppTheme.NoActionBar" />
+        <!--<activity-->
+            <!--android:name=".OfflineQuizMainPage"-->
+            <!--android:label="@string/title_activity_offline_quiz_main_page"-->
+            <!--android:screenOrientation="portrait"-->
+            <!--android:theme="@style/AppTheme.NoActionBar" />-->
+        <!--<activity-->
+            <!--android:name=".OfflineBeginner"-->
+            <!--android:label="@string/title_activity_offline_beginner"-->
+            <!--android:screenOrientation="portrait"-->
+            <!--android:theme="@style/AppTheme.NoActionBar" />-->
+        <!--<activity-->
+            <!--android:name=".OfflineIntermediate"-->
+            <!--android:label="@string/title_activity_offline_intermediate"-->
+            <!--android:theme="@style/AppTheme.NoActionBar" />-->
         <activity
             android:name=".offline.Level_1"
             android:label="@string/title_activity_beginner"
@@ -39,11 +39,11 @@
         <activity
             android:name=".offline.Level_2"
             android:label="@string/title_activity_level_2"
-            android:parentActivityName=".OfflineQuizMainPage"
+            android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.svs.myprojects.bollywoodquiz.OfflineQuizMainPage" />
+                android:value="com.svs.myprojects.bollywoodquiz.MainActivity" />
         </activity>
         <activity
             android:name=".online.VideoRound"
@@ -66,7 +66,11 @@
         <activity
             android:name=".playboard.PlayBoardActivity"
             android:label="@string/title_activity_play_board"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.svs.myprojects.bollywoodquiz.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

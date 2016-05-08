@@ -13,14 +13,15 @@ import com.svs.myprojects.bollywoodquiz.offline.Level_2;
 import com.svs.myprojects.bollywoodquiz.online.VideoRound;
 import com.svs.myprojects.bollywoodquiz.playboard.PlayBoardActivity;
 import com.svs.myprojects.bollywoodquiz.utils.Constants;
+import com.svs.myprojects.bollywoodquiz.views.LevelButtonView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Button mPlayBoardButton;
-    private Button mOfflineLevel_1_Button;
-    private Button mOfflineLevel_2_Button;
-    private Button mOfflineLevel_3_Button;
-    private Button mOnlineLevel_6_Button;
+    private LevelButtonView mOfflineLevel_1_Button;
+    private LevelButtonView mOfflineLevel_2_Button;
+    private LevelButtonView mOfflineLevel_3_Button;
+    private LevelButtonView mOnlineLevel_6_Button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,10 +45,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void setupViews() {
         mPlayBoardButton = (Button) findViewById(R.id.play_board_button);
-        mOfflineLevel_1_Button = (Button) findViewById(R.id.level_1_offline);
-        mOfflineLevel_2_Button = (Button) findViewById(R.id.level_2_offline);
-        mOfflineLevel_3_Button = (Button) findViewById(R.id.level_3_offline);
-        mOnlineLevel_6_Button = (Button) findViewById(R.id.level_6_video);
+        mOfflineLevel_1_Button = (LevelButtonView) findViewById(R.id.level_1_offline);
+        mOfflineLevel_2_Button = (LevelButtonView) findViewById(R.id.level_2_offline);
+        mOfflineLevel_3_Button = (LevelButtonView) findViewById(R.id.level_3_offline);
+        mOnlineLevel_6_Button = (LevelButtonView) findViewById(R.id.level_6_video);
         mPlayBoardButton.setOnClickListener(this);
         mOfflineLevel_1_Button.setOnClickListener(this);
         mOfflineLevel_2_Button.setOnClickListener(this);
@@ -91,7 +92,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.play_board_button:
-                finish();
                 startIntent(PlayBoardActivity.class, null);
                 break;
             case R.id.level_1_offline:
@@ -107,7 +107,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startIntent(VideoRound.class, null);
                 break;
         }
-
     }
 
     private void startIntent(Class activityClass, String level) {

@@ -19,7 +19,18 @@ public class UserModel {
         this.scoreHashMap = new HashMap<>();
     }
 
-//
+    @Override
+    public String toString() {
+        return "UserModel{" +
+                "userID='" + userID + '\'' +
+                ", fullName='" + fullName + '\'' +
+                ", password='" + password + '\'' +
+                ", scoreHashMap=" + scoreHashMap +
+                '}';
+    }
+
+
+    //
 //    public UserModel(String userID, String fullName, String password) {
 //        this.userID = userID;
 //        this.fullName = fullName;

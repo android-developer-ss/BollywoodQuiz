@@ -9,6 +9,19 @@
     <color name="colorOrange">#ffff9800</color><!-- orange 500 -->
     <color name="colorDeepOrange">#ffff5722</color><!-- deep orange 500 -->
 
+    <color name="colorOrange100">#FFCCBC</color>
+    <color name="colorOrange200">#FFAB91</color>
+    <color name="colorOrange300">#FF8A65</color>
+    <color name="colorOrange400">#FF7043</color>
+    <color name="colorOrange500">#FF5722</color>
+    <color name="colorOrange600">#F4511E</color>
+    <color name="colorOrange700">#E64A19</color>
+    <color name="colorOrange800">#D84315</color>
+    <color name="colorOrange900">#BF360C</color>
+    <color name="colorOrangeA100">#FF9E80</color>
+    <color name="colorOrangeA200">#FF6E40</color>
+    <color name="colorOrangeA400">#FF3D00</color>
+    <color name="colorOrangeA700">#DD2C00</color>
 
     <color name="primary">#FF5722</color>
     <color name="primary_dark">#E64A19</color>

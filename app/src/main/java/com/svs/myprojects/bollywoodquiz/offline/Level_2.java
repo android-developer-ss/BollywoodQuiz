@@ -212,7 +212,7 @@ public class Level_2 extends AppCompatActivity implements View.OnClickListener {
 //                if (highestScore < mScore) {
                 if (mLevel.equals(Constants.OFFLINE_LEVEL_INTER))
                     userModel = Utility.updateScore(2, mScore, userModel); //scoreModel.setOffline_level_2(mScore);
-                else
+                else if ((mLevel.equals(Constants.OFFLINE_LEVEL_EXPERT)))
                     userModel = Utility.updateScore(3, mScore, userModel);//scoreModel.setOffline_level_3(mScore);
 //                    userModel.setScore(scoreModel);
 //                }

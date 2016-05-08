@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="LevelButton">
+        <attr name="button_text" format="string" localization="suggested" />
+        <attr name="button_content" format="string" localization="suggested" />
+        <attr name="button_description" format="string" localization="suggested" />
+    </declare-styleable>
+
+
+</resources>
