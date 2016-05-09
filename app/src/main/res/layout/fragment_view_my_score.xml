@@ -91,6 +91,7 @@
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/view_my_score_recycler_view"
+        android:background="@mipmap/im_theatre_red"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
