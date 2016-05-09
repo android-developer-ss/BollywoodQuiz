@@ -17,34 +17,81 @@
             android:layout_height="match_parent"
             android:alpha="0.4"
             android:background="@color/colorOrangeA700" />
-        <!--<Button-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content" />-->
 
         <com.svs.myprojects.bollywoodquiz.views.BackButtonView
             android:id="@+id/back_button"
-            android:clickable="true"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:clickable="true" />
+
+        <ImageView
+            android:id="@+id/vms_logo"
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/im_bollywood_logo" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@id/vms_logo"
+            android:paddingTop="15dp"
+            android:text="SCOREBOARD"
+            android:textSize="25sp"
+            android:textStyle="bold|italic" />
+
 
         <TextView
             android:id="@+id/my_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="SVdsfjdsfalkdjgnS "
-            android:textSize="30sp" />
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@id/vms_logo"
+            android:text="SVS "
+            android:textAllCaps="true"
+            android:textColor="@color/colorOrange100"
+            android:textSize="20sp" />
 
         <TextView
-            android:id="@+id/info_text"
+            android:id="@+id/user_id_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/my_name" />
+            android:layout_below="@id/my_name"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@id/vms_logo"
+            android:gravity="center"
+            android:text="sss"
+            android:textColor="@color/colorOrange100"
+            android:textStyle="italic" />
+
+        <TextView
+            android:id="@+id/email_id_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/user_id_text"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@id/vms_logo"
+            android:gravity="center"
+            android:text="sss"
+            android:textColor="@color/colorOrange100"
+            android:textStyle="italic" />
+
+        <ImageView
+            android:id="@+id/edit_profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:alpha="0.7"
+            android:padding="15dp"
+            android:src="@drawable/ic_mode_edit_white_24dp"
+            android:visibility="gone" />
     </RelativeLayout>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/view_my_score_recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent" />
 
 </LinearLayout>

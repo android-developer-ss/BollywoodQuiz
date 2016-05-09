@@ -9,9 +9,9 @@ import android.widget.TextView;
 
 import com.svs.myprojects.bollywoodquiz.R;
 import com.svs.myprojects.bollywoodquiz.listeners.OnItemClickListener;
-import com.svs.myprojects.bollywoodquiz.models.UserModel;
+import com.svs.myprojects.bollywoodquiz.utils.Constants;
 
-import java.util.List;
+import java.util.HashMap;
 
 /**
  * Created by Snehal on 5/4/16.
@@ -19,13 +19,13 @@ import java.util.List;
 public class ViewMyScoreAdapter extends RecyclerView.Adapter<ViewMyScoreAdapter.ViewHolder> {
 
     private Context mContext;
-    private List<UserModel> mUserModelList;
+    private HashMap<Integer, Integer> mScoreHashMap;
     private final OnItemClickListener mListener;
 
-    public ViewMyScoreAdapter(Context context, List<UserModel> msaNoteList,
-                               OnItemClickListener listener) {
+    public ViewMyScoreAdapter(Context context, HashMap<Integer, Integer> scoreModel,
+                              OnItemClickListener listener) {
         this.mContext = context;
-        this.mUserModelList = msaNoteList;
+        this.mScoreHashMap = scoreModel;
         this.mListener = listener;
     }
 
@@ -38,35 +38,36 @@ public class ViewMyScoreAdapter extends RecyclerView.Adapter<ViewMyScoreAdapter.
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.bind(mUserModelList.get(position), mListener, position);
-        UserModel userModel = mUserModelList.get(position);
-//        holder.name.setText(userModel.createdByName);
-//        holder.content.setText(userModel.noteContent);
-//        if (!LongUtil.isEmpty(msaNote.updatedDate)) {
-//            holder.createdDate.setText(String.format(mContext.getResources().getString(R.string.notes_updated),
-//                    DateUtil.convertTimeStampToDate(msaNote.updatedDate, Constants.PSDateFormatter.MONTH_NAME_DAY_YEAR_AT_TIME)));
-//        } else {
-//            holder.createdDate.setText(String.format(mContext.getResources().getString(R.string.notes_created),
-//                    DateUtil.convertTimeStampToDate(msaNote.createdDate, Constants.PSDateFormatter.MONTH_NAME_DAY_YEAR_AT_TIME)));
-//        }
+        holder.bind(mScoreHashMap.get(position), mListener, position);
+//        ScoreModel scoreModel = mScoreHashMap.get(position);
+        holder.name.setText("Level: " + (position + 1));
+        holder.content.setText(Constants.getLevelContent(position));
+        holder.description.setText(Constants.getLevelDescription(position));
+
+        if (mScoreHashMap.containsKey(position + 1)) {
+            holder.score.setText("Highest Score: " + mScoreHashMap.get(position + 1));
+        } else {
+            holder.score.setText("Not yet played");
+        }
     }
 
     @Override
     public int getItemCount() {
-        return mUserModelList.size();
+        return Constants.MAX_LEVEL;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView name, content, createdDate;
+        public TextView name, content, description, score;
 
         public ViewHolder(View view) {
             super(view);
-//            name = (TextView) view.findViewById(R.id.personal_shopper_name);
-//            content = (TextView) view.findViewById(R.id.note_content);
-//            createdDate = (TextView) view.findViewById(R.id.created_date);
+            name = (TextView) view.findViewById(R.id.vms_level_name);
+            content = (TextView) view.findViewById(R.id.vms_level_content);
+            description = (TextView) view.findViewById(R.id.vms_level_description);
+            score = (TextView) view.findViewById(R.id.vms_score);
         }
 
-        public void bind(final UserModel item, final OnItemClickListener listener, final int position) {
+        public void bind(final Integer item, final OnItemClickListener listener, final int position) {
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

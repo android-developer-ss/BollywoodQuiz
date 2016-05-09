@@ -14,6 +14,8 @@
 
     <include layout="@layout/flake_confirm_password" />
 
+    <include layout="@layout/flake_email_id"/>
+
     <include
         android:id="@+id/register_button"
         layout="@layout/flake_button" />

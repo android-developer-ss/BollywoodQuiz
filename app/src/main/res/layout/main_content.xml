@@ -62,7 +62,7 @@
                 level_button:button_text="LEVEL 3" />
 
             <com.svs.myprojects.bollywoodquiz.views.LevelButtonView
-                android:id="@+id/level_4_offline"
+                android:id="@+id/level_4_image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:clickable="true"
@@ -71,7 +71,7 @@
                 level_button:button_text="LEVEL 4" />
 
             <com.svs.myprojects.bollywoodquiz.views.LevelButtonView
-                android:id="@+id/level_5_offline"
+                android:id="@+id/level_5_audio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:clickable="true"

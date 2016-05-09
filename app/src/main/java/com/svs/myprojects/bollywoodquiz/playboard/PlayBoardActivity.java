@@ -1,5 +1,6 @@
 package com.svs.myprojects.bollywoodquiz.playboard;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v4.app.Fragment;
@@ -9,8 +10,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
 
+import com.svs.myprojects.bollywoodquiz.MainActivity;
 import com.svs.myprojects.bollywoodquiz.R;
 import com.svs.myprojects.bollywoodquiz.utils.AlertDialogFragment;
+import com.svs.myprojects.bollywoodquiz.utils.Constants;
 import com.svs.myprojects.bollywoodquiz.utils.Utility;
 import com.svs.myprojects.bollywoodquiz.views.BackButtonView;
 
@@ -69,6 +72,7 @@ public class PlayBoardActivity extends AppCompatActivity implements View.OnClick
                 break;
             case R.id.back_button:
                 finish();
+                startIntent(MainActivity.class, null);
                 break;
         }
     }
@@ -116,5 +120,13 @@ public class PlayBoardActivity extends AppCompatActivity implements View.OnClick
         fragmentTransaction.replace(R.id.fragment_container, fragment, TAG);
         fragmentTransaction.addToBackStack(TAG);
         fragmentTransaction.commit();
+    }
+
+    private void startIntent(Class activityClass, String level) {
+        Intent intent = new Intent(PlayBoardActivity.this, activityClass);
+        if (level != null) {
+            intent.putExtra(Constants.LEVEL, level);
+        }
+        startActivity(intent);
     }
 }

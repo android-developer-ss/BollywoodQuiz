@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,7 +24,7 @@ import com.svs.myprojects.bollywoodquiz.utils.Utility;
 
 public class RegisterFragment extends Fragment implements View.OnClickListener {
 
-    private static final String TAG = RegisterFragment.class.getSimpleName();
+    public static final String TAG = RegisterFragment.class.getSimpleName();
     private OnFragmentInteractionListener mListener;
     private Button mButton;
     private View mRootView;
@@ -31,6 +32,7 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
     private AutoCompleteTextView mUserName;
     private AutoCompleteTextView mPassword;
     private AutoCompleteTextView mConfirmPassword;
+    private AutoCompleteTextView mEmailId;
     Firebase mRef;
 
     public RegisterFragment() {
@@ -74,6 +76,7 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
         mUserName = (AutoCompleteTextView) mRootView.findViewById(R.id.username);
         mPassword = (AutoCompleteTextView) mRootView.findViewById(R.id.password);
         mConfirmPassword = (AutoCompleteTextView) mRootView.findViewById(R.id.confirm_password);
+        mEmailId = (AutoCompleteTextView) mRootView.findViewById(R.id.email_id);
     }
 
     public void onButtonPressed(int viewId) {
@@ -107,113 +110,42 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(final View v) {
-        switch (v.getId()) {
-            case R.id.register_button:
-                if (allFieldsFilled()) {
-                    if (passwordsMatch()) {
-                        Query queryRef = mRef.orderByKey();
-                        queryRef.limitToFirst(1);
-                        queryRef.addListenerForSingleValueEvent(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(DataSnapshot dataSnapshot) {
-                                if (dataSnapshot.hasChild(mUserId.getText().toString())) {
-                                    displayMessage("User Id already exists.. Please use different user Id...");
-                                } else {
-                                    UserModel newUser = new UserModel(mUserId.getText().toString(),
-                                            mUserName.getText().toString(), mPassword.getText().toString());
-                                    mRef.child(mUserId.getText().toString()).setValue(newUser);
-                                    Utility.storeUserModelToSharedPreferences(getActivity(),
-                                            newUser);
-                                    displayMessage("Registration Successful");
-                                    onButtonPressed(v.getId());
-                                }
+        if (v.getId() == R.id.register_button) {
+            if (!allFieldsFilled()) {
+                displayMessage(getResources().getString(R.string.string_fill_all_fields));
+                return;
+            }
+            if (!passwordsMatch()) {
+                displayMessage(getResources().getString(R.string.password_do_not_match));
+                return;
+            }
+            if (!isValidEmail(mEmailId.getText().toString())) {
+                displayMessage(getResources().getString(R.string.enter_valid_email_id));
+                return;
+            }
 
-                            }
-
-                            @Override
-                            public void onCancelled(FirebaseError firebaseError) {
-
-                            }
-                        });
-////                        queryRef.
-//                        queryRef.addValueEventListener(new ValueEventListener() {
-//                            @Override
-//                            public void onDataChange(DataSnapshot dataSnapshot) {
-////                                callBackOccurred[0] = true;
-//                                dataSnapshot.child("aa").exists();
-//                                HashMap<String, String> hashMap = (HashMap<String, String>) dataSnapshot.getValue();
-//                                if (hashMap != null && hashMap.containsKey("userID") && hashMap.get("userID").equals(mUserId.getText().toString())) {
-//                                    displayMessage("User Id already exists.. Please use different user Id...");
-//                                } else {
-//                                    UserModel alan = new UserModel(mUserId.getText().toString(),
-//                                            mUserName.getText().toString(), mPassword.getText().toString(), new ScoreModel());
-//                                    mRef.setValue(alan);
-//                                    displayMessage("Success");
-//                                }
-//
-//
-////                                if (dataSnapshot.getKey().equals(mUserId.getText().toString())) {
-////                                    userExists[0] = true;
-////
-////                                    displayMessage("User Id already exists.. Please use different user Id...");
-////                                }
-//                            }
-//
-//                            @Override
-//                            public void onCancelled(FirebaseError firebaseError) {
-//
-//                            }
-//                        });
-
-//                        queryRef.addChildEventListener(new ChildEventListener() {
-//                            @Override
-//                            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-//                                callBackOccurred[0] = true;
-//                                if (dataSnapshot.getKey().equals(mUserId.getText().toString())) {
-//                                    userExists[0] = true;
-//
-//                                    displayMessage("User Id already exists.. Please use different user Id...");
-//                                }
-//                            }
-//
-//                            @Override
-//                            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-//                                callBackOccurred[0] = true;
-//
-//                            }
-//
-//                            @Override
-//                            public void onChildRemoved(DataSnapshot dataSnapshot) {
-//                                callBackOccurred[0] = true;
-//
-//                            }
-//
-//                            @Override
-//                            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-//                                callBackOccurred[0] = true;
-//
-//                            }
-//
-//                            @Override
-//                            public void onCancelled(FirebaseError firebaseError) {
-//                                callBackOccurred[0] = true;
-//                            }
-//
-//                        });
-
-//                        if (!userExists[0] && callBackOccurred[0]) {
-//                            UserModel alan = new UserModel(mUserId.getText().toString(),
-//                                    mUserName.getText().toString(), mPassword.getText().toString(), new ScoreModel());
-//                            alanRef.setValue(alan);
-//                        }
-                        break;
-//                        onButtonPressed(v.getId());
-                    } else
-                        displayMessage(getResources().getString(R.string.password_do_not_match));
-                } else {
-                    displayMessage(getResources().getString(R.string.string_fill_all_fields));
+            Query queryRef = mRef.orderByKey();
+            queryRef.limitToFirst(1);
+            queryRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    if (dataSnapshot.hasChild(mUserId.getText().toString())) {
+                        displayMessage("User Id already exists.. Please use different user Id...");
+                    } else {
+                        UserModel newUser = new UserModel(mUserId.getText().toString(),
+                                mUserName.getText().toString(), mPassword.getText().toString(), mPassword.getText().toString());
+                        mRef.child(mUserId.getText().toString()).setValue(newUser);
+                        Utility.storeUserModelToSharedPreferences(getActivity(), newUser);
+                        displayMessage("Registration Successful");
+                        onButtonPressed(v.getId());
+                    }
                 }
-                break;
+
+                @Override
+                public void onCancelled(FirebaseError firebaseError) {
+
+                }
+            });
         }
     }
 
@@ -226,17 +158,20 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
 
     private boolean allFieldsFilled() {
         if (mUserId.getText().toString().length() < 1) {
-//            mUserId.setBackgroundColor(getResources().getColor(android.R.color.holo_red_light));
             return false;
         } else if (mPassword.getText().toString().length() < 1) {
-//            mPassword.setBackgroundColor(getResources().getColor(android.R.color.holo_red_light));
             return false;
         } else if (mUserName.getText().toString().length() < 1) {
             return false;
         } else if (mConfirmPassword.getText().toString().length() < 1) {
             return false;
+        } else if (mEmailId.getText().toString().length() < 1) {
+            return false;
         }
         return true;
     }
 
+    public final static boolean isValidEmail(CharSequence target) {
+        return !TextUtils.isEmpty(target) && android.util.Patterns.EMAIL_ADDRESS.matcher(target).matches();
+    }
 }

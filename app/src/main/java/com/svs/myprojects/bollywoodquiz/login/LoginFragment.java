@@ -155,10 +155,10 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
                         public void onDataChange(DataSnapshot dataSnapshot) {
                             if (dataSnapshot.hasChild(mUserId.getText().toString())) {
                                 dataSnapshot = dataSnapshot.child(mUserId.getText().toString());
-                                HashMap<String, String> hashMap = (HashMap<String, String>) dataSnapshot.getValue();
+                                HashMap<String, Object> hashMap = (HashMap<String, Object>) dataSnapshot.getValue();
                                 if (hashMap.get("userID").equals(mUserId.getText().toString()) && hashMap.get("password").equals(mPassword.getText().toString())) {
                                     displayMessage("Login successful");
-                                    Utility.storeUserModelToSharedPreferences(getActivity(), Utility.convertStringToUserModel(dataSnapshot.getValue().toString()));
+                                    Utility.storeUserModelToSharedPreferences(getActivity(), Utility.convertStringToUserModel(hashMap));
                                     onButtonPressed(v.getId());
                                 } else {
                                     displayMessage("User ID / Password did not match...");

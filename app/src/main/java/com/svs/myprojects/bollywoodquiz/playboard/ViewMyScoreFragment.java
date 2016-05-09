@@ -3,21 +3,32 @@ package com.svs.myprojects.bollywoodquiz.playboard;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.svs.myprojects.bollywoodquiz.R;
+import com.svs.myprojects.bollywoodquiz.listeners.OnItemClickListener;
+import com.svs.myprojects.bollywoodquiz.login.RegisterFragment;
+import com.svs.myprojects.bollywoodquiz.models.UserModel;
+import com.svs.myprojects.bollywoodquiz.playboard.adapters.ViewMyScoreAdapter;
 import com.svs.myprojects.bollywoodquiz.utils.Utility;
 import com.svs.myprojects.bollywoodquiz.views.BackButtonView;
 
 
-public class ViewMyScoreFragment extends Fragment implements View.OnClickListener {
+public class ViewMyScoreFragment extends Fragment implements View.OnClickListener, OnItemClickListener {
 
     public static String TAG = ViewMyScoreFragment.class.getSimpleName();
 
     private BackButtonView mBackArrow;
+    private TextView mName, mUserId, mEmailId;
+    private UserModel mUserModel;
+    private RecyclerView mRecyclerView;
+    private ImageView mEditProfile;
 
     public ViewMyScoreFragment() {
         // Required empty public constructor
@@ -43,9 +54,24 @@ public class ViewMyScoreFragment extends Fragment implements View.OnClickListene
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ((TextView) getView().findViewById(R.id.info_text)).setText(Utility.getUserModelFromSharedPreferences(getActivity()).toString());
         mBackArrow = (BackButtonView) getView().findViewById(R.id.back_button);
         mBackArrow.setOnClickListener(this);
+        mName = (TextView) getView().findViewById(R.id.my_name);
+        mUserModel = Utility.getUserModelFromSharedPreferences(getActivity());
+        mName.setText(mUserModel.fullName);
+        mUserId = (TextView) getView().findViewById(R.id.user_id_text);
+        mUserId.setText("User id: " + mUserModel.userID);
+        mEmailId = (TextView) getView().findViewById(R.id.email_id_text);
+        if (mUserModel.emailID != null)
+            mEmailId.setText("Email id: " + mUserModel.emailID);
+        mEditProfile = (ImageView) getView().findViewById(R.id.edit_profile);
+        mEditProfile.setOnClickListener(this);
+        mRecyclerView = (RecyclerView) getView().findViewById(R.id.view_my_score_recycler_view);
+
+        ViewMyScoreAdapter viewMyScoreAdapter = new ViewMyScoreAdapter(getActivity(), mUserModel.scoreHashMap, this);
+
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        mRecyclerView.setAdapter(viewMyScoreAdapter);
     }
 
     @Override
@@ -53,5 +79,13 @@ public class ViewMyScoreFragment extends Fragment implements View.OnClickListene
         if (v.getId() == R.id.back_button) {
             getFragmentManager().popBackStack();
         }
+        if (v.getId() == R.id.edit_profile) {
+            ((PlayBoardActivity) getActivity()).replaceFragment(RegisterFragment.newInstance(), RegisterFragment.TAG);
+        }
+    }
+
+    @Override
+    public void onItemClick(Object item, int position) {
+
     }
 }

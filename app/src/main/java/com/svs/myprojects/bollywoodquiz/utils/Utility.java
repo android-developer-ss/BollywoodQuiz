@@ -43,8 +43,18 @@ public class Utility {
         return userModel;
     }
 
-    public static UserModel convertStringToUserModel(String userModelString) {
-        return new GsonBuilder().create().fromJson(userModelString, UserModel.class);
+    public static UserModel convertStringToUserModel(HashMap<String, Object> hashMap) {
+        UserModel userModel = new UserModel();
+        userModel.scoreHashMap = new HashMap<>();
+        ArrayList<Integer> arrayList = ((ArrayList<Integer>) hashMap.get(UserModel.scoreHashMapkey));
+        for (int i = 0; i < arrayList.size(); i++) {
+            if (arrayList.get(i) != null)
+                userModel.scoreHashMap.put(i, arrayList.get(i));
+        }
+        userModel.userID = (String) hashMap.get(UserModel.userIDkey);
+        userModel.fullName = (String) hashMap.get(UserModel.fullNamekey);
+        userModel.password = (String) hashMap.get(UserModel.passwordkey);
+        return userModel;
     }
 
     public static boolean ifUserIsLoggedIn(Context context) {

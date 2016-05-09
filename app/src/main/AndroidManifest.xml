@@ -19,19 +19,19 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <!--<activity-->
-            <!--android:name=".OfflineQuizMainPage"-->
-            <!--android:label="@string/title_activity_offline_quiz_main_page"-->
-            <!--android:screenOrientation="portrait"-->
-            <!--android:theme="@style/AppTheme.NoActionBar" />-->
+        <!--android:name=".OfflineQuizMainPage"-->
+        <!--android:label="@string/title_activity_offline_quiz_main_page"-->
+        <!--android:screenOrientation="portrait"-->
+        <!--android:theme="@style/AppTheme.NoActionBar" />-->
         <!--<activity-->
-            <!--android:name=".OfflineBeginner"-->
-            <!--android:label="@string/title_activity_offline_beginner"-->
-            <!--android:screenOrientation="portrait"-->
-            <!--android:theme="@style/AppTheme.NoActionBar" />-->
+        <!--android:name=".OfflineBeginner"-->
+        <!--android:label="@string/title_activity_offline_beginner"-->
+        <!--android:screenOrientation="portrait"-->
+        <!--android:theme="@style/AppTheme.NoActionBar" />-->
         <!--<activity-->
-            <!--android:name=".OfflineIntermediate"-->
-            <!--android:label="@string/title_activity_offline_intermediate"-->
-            <!--android:theme="@style/AppTheme.NoActionBar" />-->
+        <!--android:name=".OfflineIntermediate"-->
+        <!--android:label="@string/title_activity_offline_intermediate"-->
+        <!--android:theme="@style/AppTheme.NoActionBar" />-->
         <activity
             android:name=".offline.Level_1"
             android:label="@string/title_activity_beginner"
@@ -39,7 +39,22 @@
         <activity
             android:name=".offline.Level_2"
             android:label="@string/title_activity_level_2"
-            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.svs.myprojects.bollywoodquiz.MainActivity" />
+        </activity>
+        <activity
+            android:name=".offline.Level_4_Image"
+            android:label="Image Level 4"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.svs.myprojects.bollywoodquiz.MainActivity" />
+        </activity>
+        <activity
+            android:name=".offline.Level_5_Audio"
+            android:label="Audio Level 5"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

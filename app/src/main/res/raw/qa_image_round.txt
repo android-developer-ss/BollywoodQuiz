@@ -1,0 +1,20 @@
+AAA|Andaz Apna Apna|Diljale|Raja Babu|Kris|Andaz Apna Apna
+Bajirao|Devdas|Bajirao Mastani|Dostana|Ram Leela|Bajirao Mastani
+Barfi|Ye Jawani Hai Deewani|Kuch Kuch Hota Hai|Barfi!|Dil To Pagal Hai|Barfi!
+BB|Rocky Handsome|Jaanwar|Saathi|Bajrangi Bhaijaan|Bajrangi Bhaijaan
+DB|Delhi Belly|Rang De Basanti|Dil Chahata Hai|3 Idiots|Delhi Belly
+Dilse|Shakti|Dil Se|Dabangg|The Train|Dil Se
+Dostana|Cocktail|Bachna Ae Haseeno|Race|Dostana|Dostana
+DTPH|Kuch Kuchh Hota hai|Dil To Pagal Hai|Dhoom 3|Mujhse Dosti Karoge|Dil To Pagal Hai
+HDDCS|Prem Ratan Dhan Payo|Hum Dil De Chuke Sanam|Maine Pyar Kyon Kiya|Maine Pyar Kiya|Hum Dil De Chuke Sanam
+KKHH|Dil To Pagal Hai|Kuchh Kuchh Hota Hai|Kabhee Khushi Kabhee Ghum|Mohabbatein|Kuchh Kuchh Hota Hai
+Krish3|Krrish 3|Dhoom 2|Krrish 2|Ghuzarish|Krrish 3
+Lagaan|Upkar|Jai Jawan Jai Kishan|Lagaan|Kohram|Lagaan
+Mohra|Maine Pyar Kyon Kiya|Namak Halaal|Mohra|Yalgaar|Mohra
+Mrindia|Mr. India|Jeet|Aaj Ka Arjun|Karan Arjun|Mr. India
+NamakHalal|Hum|Namak Halaal|Deewar|Yarana|Namak Halaal
+omkara|Bajirao Mastani|Devdas|Omkara|Masaan|Omkara
+Sholay|Muqaddar Ka Sikandar|Shahenshah|Sholay|Zanjeer|Sholay
+Tamasha|Ye Jawani Hai Deewani|Bachna Ae Haseeno|Tamasha|Rockstar|Tamasha
+TWMR|Masaan|Tanu Weds Manu Returns|Main Tulsi Tere Aangan Ki|Prem Rog|Tanu Weds Manu Returns
+YJHD|Hello Brtoher|Ye Jawani Hai Deewani|Dilwale|Bajrani Bhaijaan|Ye Jawani Hai Deewani

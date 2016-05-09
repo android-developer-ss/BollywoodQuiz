@@ -16,6 +16,9 @@ import com.svs.myprojects.bollywoodquiz.R;
 public class LevelButtonView extends LinearLayout {
 
     private View mView;
+    private TextView mTitleTextView;
+    private TextView mContentTextView;
+    private TextView mDescriptionTextView;
 
     public LevelButtonView(Context context, View mView) {
         super(context);
@@ -34,16 +37,23 @@ public class LevelButtonView extends LinearLayout {
 
         mView = LayoutInflater.from(context).inflate(R.layout.level_button_view, this, true);
 
-        TextView titleTextView = (TextView) mView.findViewById(R.id.level_button_text);
-        titleTextView.setText(titleText);
+        mTitleTextView = (TextView) mView.findViewById(R.id.level_button_text);
+        mTitleTextView.setText(titleText);
 
-        TextView contentTextView = (TextView) mView.findViewById(R.id.level_button_content);
-        contentTextView.setText(contentText);
+        mContentTextView = (TextView) mView.findViewById(R.id.level_button_content);
+        mContentTextView.setText(contentText);
 
-        TextView descriptionTextView = (TextView) mView.findViewById(R.id.level_button_description);
-        descriptionTextView.setText(descriptionText);
+        mDescriptionTextView = (TextView) mView.findViewById(R.id.level_button_description);
+        mDescriptionTextView.setText(descriptionText);
 
     }
 
+    public void setLevelContentText(String string){
+        mContentTextView.setText(string);
+    }
+
+    public void setLevelDescriptionText(String string){
+        mDescriptionTextView.setText(string);
+    }
 
 }

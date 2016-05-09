@@ -18,6 +18,7 @@
     <string name="name">* Full Name</string>
     <string name="confirm_password">* Confirm Password</string>
     <string name="user_id">* User ID</string>
+    <string name="email_id">* Email ID</string>
     <string name="string_fill_all_fields">Please fill all the fields.</string>
     <string name="password_do_not_match">Passwords you entered do not match.</string>
     <string name="title_activity_welcom_screen">WelcomScreenActivity</string>
@@ -35,4 +36,5 @@
         Goodbyes are not the end...\n
         They simply mean we\'ll miss you...\n
         Until we meet again...</string>
+    <string name="enter_valid_email_id">"Please enter valid email id.. "</string>
 </resources>

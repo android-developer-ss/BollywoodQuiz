@@ -52,6 +52,12 @@ public class Level_2 extends AppCompatActivity implements View.OnClickListener {
         prepareQuestionList();
         setNextQuestion();
     }
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (mCountDownTimer != null)
+            mCountDownTimer.cancel();
+    }
 
     private void setupViewsAndListeners() {
         mLevel = getIntent().getStringExtra(Constants.LEVEL);
@@ -171,6 +177,9 @@ public class Level_2 extends AppCompatActivity implements View.OnClickListener {
         return byteArrayOutputStream.toString();
     }
 
+    /***********************************************************************************************
+     * Animation for questions and well done smiley.
+     */
     public void animateThumbsImage(int drawableId) {
         mThumbImageView.setVisibility(ImageView.VISIBLE);
         mThumbImageView.setImageDrawable(getResources().getDrawable(drawableId));
@@ -206,23 +215,19 @@ public class Level_2 extends AppCompatActivity implements View.OnClickListener {
 
             public void onFinish() {
                 UserModel userModel = Utility.getUserModelFromSharedPreferences(Level_2.this);
-//                ScoreModel scoreModel = userModel.s;
-//                int highestScore = mLevel.equals(Constants.OFFLINE_LEVEL_INTER) ? scoreModel.getOffline_level_2() : scoreModel.getOffline_level_3();
-//
-//                if (highestScore < mScore) {
                 if (mLevel.equals(Constants.OFFLINE_LEVEL_INTER))
                     userModel = Utility.updateScore(2, mScore, userModel); //scoreModel.setOffline_level_2(mScore);
                 else if ((mLevel.equals(Constants.OFFLINE_LEVEL_EXPERT)))
                     userModel = Utility.updateScore(3, mScore, userModel);//scoreModel.setOffline_level_3(mScore);
-//                    userModel.setScore(scoreModel);
-//                }
                 Utility.saveScoreToFirebase(Level_2.this, userModel);
-
                 finish();
             }
         }.start();
     }
 
+    /***********************************************************************************************
+     * On Click Listeners..
+     */
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
