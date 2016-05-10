@@ -4,6 +4,10 @@
     android:layout_height="match_parent"
     tools:context="com.svs.myprojects.bollywoodquiz.playboard.ViewLeaderBoardFragment">
 
-
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/vlb_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/im_theatre_red" />
 
 </FrameLayout>
