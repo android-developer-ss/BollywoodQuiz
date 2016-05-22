@@ -19,7 +19,6 @@ import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerView;
 import com.svs.myprojects.bollywoodquiz.R;
 import com.svs.myprojects.bollywoodquiz.models.QuestionModel;
-import com.svs.myprojects.bollywoodquiz.models.ScoreModel;
 import com.svs.myprojects.bollywoodquiz.models.UserModel;
 import com.svs.myprojects.bollywoodquiz.utils.Config;
 import com.svs.myprojects.bollywoodquiz.utils.Constants;
@@ -271,7 +270,7 @@ public class VideoRound extends YouTubeBaseActivity implements YouTubePlayer.OnI
 //                        scoreModel.setOnline_level_1(mScore);
 //                    userModel.setScore(scoreModel);
 //                }
-                userModel = Utility.updateScore(4, mScore, userModel);
+                userModel = Utility.updateScore(6, mScore, userModel);
                 Utility.saveScoreToFirebase(VideoRound.this, userModel);
                 finish();
             }

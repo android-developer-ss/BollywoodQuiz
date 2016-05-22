@@ -23,6 +23,9 @@
     <color name="colorOrangeA400">#FF3D00</color>
     <color name="colorOrangeA700">#DD2C00</color>
 
+    <color name="colorYellow">#FFFF66</color>
+    <color name="colorMintGreen">#ebfe6e</color>
+
     <color name="primary">#FF5722</color>
     <color name="primary_dark">#E64A19</color>
     <color name="primary_light">#FFCCBC</color>
@@ -31,4 +34,5 @@
     <color name="secondary_text">#727272</color>
     <color name="icons">#FFFFFF</color>
     <color name="divider">#B6B6B6</color>
+
 </resources>
