@@ -6,11 +6,11 @@ import java.util.HashMap;
  * Created by Snehal on 4/25/16.
  */
 public class UserModel {
-    public static String userIDkey = "userID";
-    public static String fullNamekey = "fullName";
-    public static String passwordkey = "password";
-    public static String emailIDkey = "emailID";
-    public static String scoreHashMapkey = "scoreHashMap";
+    public static String userIDKey = "userID";
+    public static String fullNameKey = "fullName";
+    public static String passwordKey = "password";
+    public static String emailIDKey = "emailID";
+    public static String scoreHashMapKey = "scoreHashMap";
     public String userID;
     public String fullName;
     public String password;
@@ -28,8 +28,6 @@ public class UserModel {
     public UserModel() {
 
     }
-
-
 
     @Override
     public String toString() {

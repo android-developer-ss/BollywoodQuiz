@@ -46,14 +46,14 @@ public class Utility {
     public static UserModel convertStringToUserModel(HashMap<String, Object> hashMap) {
         UserModel userModel = new UserModel();
         userModel.scoreHashMap = new HashMap<>();
-        ArrayList<Integer> arrayList = ((ArrayList<Integer>) hashMap.get(UserModel.scoreHashMapkey));
+        ArrayList<Integer> arrayList = ((ArrayList<Integer>) hashMap.get(UserModel.scoreHashMapKey));
         for (int i = 0; i < arrayList.size(); i++) {
             if (arrayList.get(i) != null)
                 userModel.scoreHashMap.put(i, arrayList.get(i));
         }
-        userModel.userID = (String) hashMap.get(UserModel.userIDkey);
-        userModel.fullName = (String) hashMap.get(UserModel.fullNamekey);
-        userModel.password = (String) hashMap.get(UserModel.passwordkey);
+        userModel.userID = (String) hashMap.get(UserModel.userIDKey);
+        userModel.fullName = (String) hashMap.get(UserModel.fullNameKey);
+        userModel.password = (String) hashMap.get(UserModel.passwordKey);
         return userModel;
     }
 
