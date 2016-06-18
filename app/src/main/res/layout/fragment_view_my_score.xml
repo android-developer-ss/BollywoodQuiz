@@ -127,7 +127,7 @@
     <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:background="@color/colorDeepOrange"
         android:orientation="vertical"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
@@ -137,7 +137,7 @@
         <android.support.v7.widget.RecyclerView
             android:id="@+id/view_my_score_recycler_view"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:background="@mipmap/im_theatre_red" />
 
     </FrameLayout>
