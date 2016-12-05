@@ -111,6 +111,11 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(final View v) {
         if (v.getId() == R.id.register_button) {
+            if (Utility.containsSpecialCharacter(mUserId.getText().toString())) {
+                displayMessage(getResources().getString(R.string.avoid_special_characters));
+                mUserId.setText("");
+                return;
+            }
             if (!allFieldsFilled()) {
                 displayMessage(getResources().getString(R.string.string_fill_all_fields));
                 return;

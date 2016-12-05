@@ -23,6 +23,7 @@
     <string name="password_do_not_match">Passwords you entered do not match.</string>
     <string name="title_activity_welcom_screen">WelcomScreenActivity</string>
     <string name="title_activity_play_board">PlayBoardActivity</string>
+    <string name="avoid_special_characters">Please use only alphabets or numbers in USER-ID. No special characters allowed. </string>
 
     <string name="button_text"><font size="20sp">First line!</font>\n\<font size="10sp">Second line!</font></string>
 

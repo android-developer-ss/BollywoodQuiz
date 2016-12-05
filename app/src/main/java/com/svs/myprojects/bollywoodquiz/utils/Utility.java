@@ -89,6 +89,10 @@ public class Utility {
         return userModel;
     }
 
+    public static boolean containsSpecialCharacter(String s) {
+        return (s == null) ? false : s.matches("^.*[^a-zA-Z0-9 ].*$");
+    }
+
 //    private static void updateScoreInFireBase(final UserModel userModel) {
 //        final Firebase ref = new Firebase(Constants.FIREBASE_USERS_URL);
 //        Query queryRef = ref.orderByKey();
