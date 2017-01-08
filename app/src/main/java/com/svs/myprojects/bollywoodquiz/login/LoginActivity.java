@@ -31,8 +31,6 @@ public class LoginActivity extends AppCompatActivity
 
         setupViews();
         Firebase.setAndroidContext(this);
-//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
         //Listen for changes in the back stack
         getSupportFragmentManager().addOnBackStackChangedListener(this);
         //Handle when activity is recreated like on orientation Change

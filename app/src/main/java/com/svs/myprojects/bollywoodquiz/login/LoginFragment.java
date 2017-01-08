@@ -19,6 +19,7 @@ import com.firebase.client.ValueEventListener;
 import com.svs.myprojects.bollywoodquiz.R;
 import com.svs.myprojects.bollywoodquiz.listeners.OnFragmentInteractionListener;
 import com.svs.myprojects.bollywoodquiz.utils.Constants;
+import com.svs.myprojects.bollywoodquiz.utils.Helper;
 import com.svs.myprojects.bollywoodquiz.utils.Utility;
 
 import java.util.HashMap;
@@ -26,7 +27,7 @@ import java.util.HashMap;
 public class LoginFragment extends Fragment implements View.OnClickListener {
     private static final String TAG = LoginFragment.class.getSimpleName();
     private OnFragmentInteractionListener mListener;
-    private Button mButton;
+    private Button mLoginButton;
     private View mRootView;
     private TextView mRegisterHere;
     private AutoCompleteTextView mUserId;
@@ -63,9 +64,9 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mButton = (Button) mRootView.findViewById(R.id.login_button);
-        mButton.setText(R.string.login);
-        mButton.setOnClickListener(this);
+        mLoginButton = (Button) mRootView.findViewById(R.id.login_button);
+        mLoginButton.setText(R.string.login);
+        mLoginButton.setOnClickListener(this);
         mRegisterHere = (TextView) mRootView.findViewById(R.id.register_here);
         mRegisterHere.setOnClickListener(this);
         mUserId = (AutoCompleteTextView) mRootView.findViewById(R.id.user_id);
@@ -105,50 +106,8 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
     public void onClick(final View v) {
         switch (v.getId()) {
             case R.id.login_button:
+                Helper.hideKeyboard(getContext(), mLoginButton);
                 if (allFieldsFilled()) {
-//                    final Firebase alanRef = mRef.child(mUserId.getText().toString());
-//                    Query queryRef = mRef.orderByKey();
-//                    queryRef.addChildEventListener(new ChildEventListener() {
-//                        @Override
-//                        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-//                            if (dataSnapshot.getKey().equals(mUserId.getText().toString())) {
-//                                HashMap<String, String> hashMap = (HashMap<String, String>) dataSnapshot.getValue();
-//                                if (hashMap.containsKey("userID") && hashMap.containsKey("password")) {
-//                                    if (hashMap.get("userID").equals(mUserId.getText().toString()) &&
-//                                            hashMap.get("password").equals(mPassword.getText().toString())) {
-//                                        userExists[0] = true;
-//                                        displayMessage("Login successful");
-//                                        onButtonPressed(v.getId());
-//                                    }
-//                                }
-//                            }
-//                        }
-//
-//                        @Override
-//                        public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-//
-//                        }
-//
-//                        @Override
-//                        public void onChildRemoved(DataSnapshot dataSnapshot) {
-//
-//                        }
-//
-//                        @Override
-//                        public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-//
-//                        }
-//
-//                        @Override
-//                        public void onCancelled(FirebaseError firebaseError) {
-//
-//                        }
-//                    });
-//
-//                    if (!userExists[0]) {
-//                        displayMessage("User ID / Password did not match...");
-//                    }
-
                     Query queryRef = mRef.orderByKey();
                     queryRef.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
@@ -163,16 +122,9 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
                                 } else {
                                     displayMessage("User ID / Password did not match...");
                                 }
-//                                displayMessage("User Id already exists.. Please use different user Id...");
                             } else {
                                 displayMessage("User ID / Password did not match...");
-//                                UserModel newUser = new UserModel(mUserId.getText().toString(),
-//                                        mUserName.getText().toString(), mPassword.getText().toString(), new ScoreModel());
-//                                mRef.child(mUserId.getText().toString()).setValue(newUser);
-//                                displayMessage("Registration Successful");
-//                                onButtonPressed(v.getId());
                             }
-
                         }
 
                         @Override
@@ -180,9 +132,6 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
 
                         }
                     });
-//                    onButtonPressed(v.getId());
-                } else {
-                    displayMessage(getResources().getString(R.string.string_fill_all_fields));
                 }
                 break;
             case R.id.register_here:
@@ -191,12 +140,21 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
         }
     }
 
+    private boolean allFieldsValid() {
+        if (Utility.containsSpecialCharacter(mUserId.getText().toString())) {
+            displayMessage(getResources().getString(R.string.avoid_special_characters));
+            mUserId.setText("");
+            return false;
+        }
+        return true;
+    }
+
     private boolean allFieldsFilled() {
         if (mUserId.getText().toString().length() < 1) {
-//            mUserId.setBackgroundColor(getResources().getColor(android.R.color.holo_red_light));
             return false;
         } else if (mPassword.getText().toString().length() < 1) {
-//            mPassword.setBackgroundColor(getResources().getColor(android.R.color.holo_red_light));
+            return false;
+        } else if (!allFieldsValid()) {
             return false;
         }
         return true;
